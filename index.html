@@ -53,24 +53,25 @@ select,input{padding:5px 8px;font-size:.85rem;border-radius:4px;border:1px solid
 table.excel-table{border-collapse:collapse;width:max-content;min-width:100%;font-family:Arial,sans-serif}
 table.excel-table th,table.excel-table td{border:1px solid #555;text-align:center;font-size:.78rem;box-sizing:border-box;padding:0}
 
+/* COLONNE SINISTRE STICKY: Colonna Nome allargata a 215px per mostrare Grado + Cognome Nome + (Funzione) senza tagli */
 .sticky-c1{position:sticky;left:0;width:62px;min-width:62px;max-width:62px;z-index:20;background:#d9d9d9;font-weight:700;font-size:.72rem!important}
-.sticky-c2{position:sticky;left:62px;width:165px;min-width:165px;max-width:165px;z-index:20;background:#fff;text-align:left!important;padding:2px 6px!important;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sticky-c3{position:sticky;left:227px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
-.sticky-c4{position:sticky;left:275px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
-.sticky-c5{position:sticky;left:323px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
-.sticky-c6{position:sticky;left:371px;width:38px;min-width:38px;max-width:38px;z-index:20;background:#fff;font-weight:700}
-.sticky-c7{position:sticky;left:409px;width:46px;min-width:46px;max-width:46px;z-index:20;background:#fef9e7;color:#d35400;font-weight:700;border-right:2px solid #000!important}
+.sticky-c2{position:sticky;left:62px;width:215px;min-width:215px;max-width:215px;z-index:20;background:#fff;text-align:left!important;padding:2px 6px!important;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-c3{position:sticky;left:277px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
+.sticky-c4{position:sticky;left:325px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
+.sticky-c5{position:sticky;left:373px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
+.sticky-c6{position:sticky;left:421px;width:38px;min-width:38px;max-width:38px;z-index:20;background:#fff;font-weight:700}
+.sticky-c7{position:sticky;left:459px;width:46px;min-width:46px;max-width:46px;z-index:20;background:#fef9e7;color:#d35400;font-weight:700;border-right:2px solid #000!important}
 
 table.hide-extra-cols .collapsible-col{display:none!important}
-table.hide-extra-cols .sticky-c2{left:0!important;width:155px!important;min-width:155px!important;max-width:155px!important;border-right:2px solid #000!important}
+table.hide-extra-cols .sticky-c2{left:0!important;width:205px!important;min-width:205px!important;max-width:205px!important;border-right:2px solid #000!important}
 table.hide-extra-cols .summary-label{left:0!important;border-right:2px solid #000!important}
 
-table.fit-year-screen{width:100%!important;min-width:100%!important;table-layout:fixed!important}
-table.fit-year-screen .row-ranges th{width:auto!important;min-width:19px!important;max-width:none!important;height:78px!important}
-table.fit-year-screen .vertical-range{font-size:.65rem!important;letter-spacing:-.3px}
-table.fit-year-screen .cell-data{width:auto!important;min-width:19px!important;font-size:.72rem!important}
-table.fit-year-screen .row-weeknums th,table.fit-year-screen .row-weekpts th{font-size:.66rem!important}
-table.fit-year-screen .row-tot-role td,table.fit-year-screen .row-tot-final td{font-size:.64rem!important}
+/* MODALITÀ ADATTA TUTTO L'ANNO: Ridimensiona solo le 53 colonne delle settimane senza toccare le colonne fisse di sinistra */
+table.fit-year-screen .row-ranges th:not(.sticky-c1):not(.sticky-c2):not(.sticky-c3):not(.sticky-c4):not(.sticky-c5):not(.sticky-c6):not(.sticky-c7){width:var(--week-fit-w,19px)!important;min-width:var(--week-fit-w,19px)!important;max-width:var(--week-fit-w,19px)!important;height:78px!important}
+table.fit-year-screen .vertical-range{font-size:.64rem!important;letter-spacing:-.3px}
+table.fit-year-screen .cell-data{width:var(--week-fit-w,19px)!important;min-width:var(--week-fit-w,19px)!important;max-width:var(--week-fit-w,19px)!important;font-size:.7rem!important}
+table.fit-year-screen .row-weeknums th:not(.collapsible-col),table.fit-year-screen .row-weekpts th{width:var(--week-fit-w,19px)!important;min-width:var(--week-fit-w,19px)!important;max-width:var(--week-fit-w,19px)!important;font-size:.64rem!important}
+table.fit-year-screen .row-tot-role td:not(.summary-left-idx):not(.summary-label),table.fit-year-screen .row-tot-final td:not(.summary-left-idx):not(.summary-label){font-size:.62rem!important}
 
 thead .sticky-c1,thead .sticky-c2,thead .sticky-c3,thead .sticky-c4,thead .sticky-c5,thead .sticky-c6,thead .sticky-c7{z-index:35!important;background:#f2f2f2}
 .title-assenze-yellow{background:#ff0!important;color:red!important;font-size:1rem!important;font-weight:700!important;border-bottom:2px solid #000!important;border-right:2px solid #000!important}
@@ -273,7 +274,6 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
 </div>
 
 <div id="viewCalendar" class="view-section active">
-  <!-- BARRA COMANDI VISTA E INSERIMENTO -->
   <div class="controls-bar">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
       <div class="view-switcher">
@@ -608,14 +608,14 @@ let appState = {
   calendarMode:'year', utenteLoggato:null, isAdmin:false,
   hideExtraCols:false,
   fitYearScreen:false,
-  selectedFilterRoles:[],  // Filtro multiplo Funzioni nel layout
-  selectedFilterUnita:[],  // Filtro multiplo Unità nel layout
-  selectedFilterGruppi:[], // Filtro multiplo Gruppi nel layout
+  selectedFilterRoles:[],
+  selectedFilterUnita:[],
+  selectedFilterGruppi:[],
   config:{
     manualActiveTornata:"AUTO",
     tornate:getDefaultTornateList(),
     rankingRoles:["REV","AssD"],
-    functionOnlyRoles:["Cgr","Csq","SDSC","REV","AssD"], // Funzioni trasversali che ignorano le regole di Unità/Gruppo!
+    functionOnlyRoles:["Cgr","Csq","SDSC","REV","AssD"],
     rankingMetric:"TOTALE",
     rankingTurnIndex:{},
     punteggiSettimane:Object.assign({}, DEFAULT_PUNTEGGI_DIRETTIVA),
@@ -642,6 +642,7 @@ window.onload = function() {
     renderCalendar();
   }
   caricaDatiServer();
+  window.addEventListener("resize", () => { if (appState.fitYearScreen) aggiornaLarghezzaFitYear(); });
 };
 
 function applicaSessioneUtente(utenteObj, isAdminFlag) {
@@ -721,6 +722,20 @@ function aggiornaTimestampSync() {
   if (btn) btn.innerHTML = `🔄 Sincronizza <small id="lastSyncTime" style="font-weight:400;font-size:.72rem;opacity:.9">(${hh}:${mm}:${ss})</small>`;
 }
 
+// Calcola la larghezza esatta di ogni colonna settimana per far stare tutto l'anno a schermo senza mai schiacciare le colonne fisse di sinistra
+function aggiornaLarghezzaFitYear() {
+  const tbl = document.getElementById("vacationTable");
+  if (!tbl || !appState.fitYearScreen) {
+    if (tbl) tbl.style.removeProperty("--week-fit-w");
+    return;
+  }
+  const containerW = document.querySelector(".table-container").clientWidth || (window.innerWidth - 40);
+  const leftColsW = appState.hideExtraCols ? 205 : 505;
+  const numWeeks = appState.weeksMap.length || 53;
+  const wPx = Math.max(17, Math.floor((containerW - leftColsW - 6) / numWeeks));
+  tbl.style.setProperty("--week-fit-w", wPx + "px");
+}
+
 function toggleHideExtraColumns() {
   appState.hideExtraCols = !appState.hideExtraCols;
   const tbl = document.getElementById("vacationTable");
@@ -730,6 +745,7 @@ function toggleHideExtraColumns() {
     btn.innerText = appState.hideExtraCols ? "▶ Mostra Colonne (V, F, PF, %, Pt)" : "◀ Nascondi Colonne (V, F, PF, %, Pt)";
     btn.style.background = appState.hideExtraCols ? "#e67e22" : "#34495e";
   }
+  aggiornaLarghezzaFitYear();
   renderCalendar();
 }
 
@@ -742,6 +758,7 @@ function toggleFitYearScreen() {
     btn.innerText = appState.fitYearScreen ? "🔍 Dimensione Standard (Con Scroll)" : "📐 Adatta Tutto l'Anno (Senza Scroll)";
     btn.style.background = appState.fitYearScreen ? "#e67e22" : "#16a085";
   }
+  aggiornaLarghezzaFitYear();
 }
 
 function assicuraRegolaAnnualeMax3Consecutive(rulesArray) {
@@ -901,7 +918,6 @@ function isRoleInRankingMode(roleName) {
   return appState.config.rankingRoles.some(x => String(x).trim().toUpperCase() === rUp);
 }
 
-// Verifica se una Funzione è blindata come "Solo Regole di Funzione" (ignora regole di Unità/Gruppo)
 function isRoleFunctionOnly(roleName) {
   if (!roleName || !Array.isArray(appState.config.functionOnlyRoles)) return false;
   const rUp = String(roleName).trim().toUpperCase();
@@ -1106,9 +1122,6 @@ function renderModaleGraduatoriaContent() {
   }
 }
 
-// =========================================================
-// BARRA FILTRI MULTI-SELEZIONE COMBINATI: FUNZIONE + UNITÀ + GRUPPO
-// =========================================================
 function renderMultiRoleFilterBar() {
   const cRole = document.getElementById("multiRoleFilterContainer");
   const cUnita = document.getElementById("multiUnitaFilterContainer");
@@ -1120,7 +1133,6 @@ function renderMultiRoleFilterBar() {
   const uList = Array.isArray(appState.config.unita) && appState.config.unita.length > 0 ? appState.config.unita : ["Unità 1","Unità 2","Unità 3","Unità 4"];
   const gList = Array.isArray(appState.config.gruppi) && appState.config.gruppi.length > 0 ? appState.config.gruppi : ["Gruppo 1","Gruppo 2","Gruppo 3","Gruppo 4","Gruppo 5","Gruppo 6"];
 
-  // 1. Chip Funzioni
   const isAllR = appState.selectedFilterRoles.length === 0;
   let htmlR = `<span class="role-chip ${isAllR ? 'active' : ''}" onclick="resetMultiRoleFilter()">Tutte</span>`;
   fList.forEach(f => {
@@ -1131,7 +1143,6 @@ function renderMultiRoleFilterBar() {
   htmlR += `<span class="role-chip preset-chip" onclick="setPresetRoleFilter(['Cgr','Csq','SDSC'])" title="Filtra Quadri">⚡ Quadri</span>`;
   cRole.innerHTML = htmlR;
 
-  // 2. Chip Unità
   if (cUnita) {
     const isAllU = appState.selectedFilterUnita.length === 0;
     let htmlU = `<span class="role-chip ${isAllU ? 'active-unita' : ''}" onclick="resetMultiUnitaFilter()">Tutte</span>`;
@@ -1142,7 +1153,6 @@ function renderMultiRoleFilterBar() {
     cUnita.innerHTML = htmlU;
   }
 
-  // 3. Chip Gruppi
   if (cGruppo) {
     const isAllG = appState.selectedFilterGruppi.length === 0;
     let htmlG = `<span class="role-chip ${isAllG ? 'active-gruppo' : ''}" onclick="resetMultiGruppoFilter()">Tutti</span>`;
@@ -1343,26 +1353,16 @@ function weekMatchesRule(w, r) {
   return false;
 }
 
-// =========================================================
-// MOTORE INTELLIGENTE DI MATCHING REGOLE (FUNZIONE + UNITÀ + GRUPPO)
-// Gestisce:
-// 1) Blindatura Funzioni Trasversali (es. Csq, REV, SDSC ignorano regole di Unità/Gruppo)
-// 2) Modalità "OGNI_UNITA" e "OGNI_GRUPPO" (confronta dinamicamente i colleghi della stessa Unità/Gruppo)
-// =========================================================
 function userMatchesRuleTarget(userObj, ruleObj, referenceUser = null) {
   const rawU = String(ruleObj.targetUnita || "TUTTE").trim().toUpperCase();
   const rawG = String(ruleObj.targetGruppo || "TUTTI").trim().toUpperCase();
   const hasUnitaConstraint = (rawU !== "" && rawU !== "TUTTE" && rawU !== "TUTTI");
   const hasGruppoConstraint = (rawG !== "" && rawG !== "TUTTI" && rawG !== "TUTTE");
 
-  // 0. BLINDATURA FUNZIONI TRASVERSALI:
-  // Se la funzione del collaboratore è in "functionOnlyRoles" (es. Cgr, Csq, SDSC, REV, AssD),
-  // ignora automaticamente qualsiasi regola che abbia un vincolo di Unità o di Gruppo!
   if ((hasUnitaConstraint || hasGruppoConstraint) && isRoleFunctionOnly(userObj.funzione)) {
     return false;
   }
 
-  // 1. Verifica Funzione
   const tFunc = String(ruleObj.targetGroup || "TUTTI").toUpperCase().split('+').map(s => s.trim()).filter(Boolean);
   if (!tFunc.includes("TUTTI")) {
     const uFuncUp = String(userObj.funzione || "").trim().toUpperCase();
@@ -1370,7 +1370,6 @@ function userMatchesRuleTarget(userObj, ruleObj, referenceUser = null) {
     if (!matchF) return false;
   }
 
-  // 2. Verifica Unità (specifica oppure dinamica "OGNI_UNITA")
   if (hasUnitaConstraint) {
     const uUnitaUp = String(userObj.unita || "").trim().toUpperCase();
     if (!uUnitaUp) return false;
@@ -1385,7 +1384,6 @@ function userMatchesRuleTarget(userObj, ruleObj, referenceUser = null) {
     }
   }
 
-  // 3. Verifica Gruppo (specifico oppure dinamico "OGNI_GRUPPO")
   if (hasGruppoConstraint) {
     const uGruppoUp = String(userObj.gruppo || "").trim().toUpperCase();
     if (!uGruppoUp) return false;
@@ -1584,7 +1582,6 @@ function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
   return null;
 }
 
-// Analizza problematiche supportando anche le regole dinamiche "OGNI_UNITA" e "OGNI_GRUPPO"
 function analizzaProblematicheCalendario() {
   const tAtt = getTornataAttiva(), numTornata = tAtt ? String(tAtt.id) : "1";
   let problematiche = [], cellWarnings = {}, weekConflicts = new Set();
@@ -1595,7 +1592,6 @@ function analizzaProblematicheCalendario() {
       if (rule.tornata !== 'TUTTE' && String(rule.tornata) !== numTornata) return;
       if (!weekMatchesRule(w, rule)) return;
 
-      // Raggruppa gli assenti per "bucket" (se la regola usa OGNI_UNITA o OGNI_GRUPPO, crea un sottogruppo separato per ogni Unità/Gruppo!)
       let buckets = {};
       appState.utenti.forEach(u => {
         if (!userMatchesRuleTarget(u, rule, null)) return;
@@ -1655,6 +1651,7 @@ function setCalendarMode(mode) {
 function renderCalendar() {
   analizzaProblematicheCalendario();
   aggiornaBarraTurnoRankingUtente();
+  aggiornaLarghezzaFitYear();
   if (appState.calendarMode === 'year') renderAnnualWeeklyView();
   else renderDailyView();
 }
@@ -2307,7 +2304,6 @@ function renderAdminData() {
     return `<li><span>🛑 <b>[Assenza - Tornata: ${r.tornata}]</b> ${pTxt} | Target: <b style="color:#2980b9">[${targetBadge}]</b> | ${vincoliAttivi.join(" | ")} ${r.label?`— <i>${r.label}</i>`:''}</span><button type="button" class="btn-delete" onclick="deleteConfigItem('unifiedRules',${r.id})">X</button></li>`;
   }).join('');
 
-  // Riquadro 4 A): Chip Blindatura Funzioni Trasversali (Solo Funzione)
   const funcOnlyBox = document.getElementById("functionOnlyRolesContainer");
   if (funcOnlyBox) {
     funcOnlyBox.innerHTML = appState.config.funzioni.map(f => {
@@ -2316,7 +2312,6 @@ function renderAdminData() {
     }).join('');
   }
 
-  // Riquadro 4 B): Chip Modalità Ranking
   const rankRolesBox = document.getElementById("rankingRolesContainer");
   if (rankRolesBox) {
     rankRolesBox.innerHTML = appState.config.funzioni.map(f => {
