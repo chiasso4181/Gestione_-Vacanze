@@ -94,7 +94,7 @@ tr.active-turn-row .sticky-c2{border-left:5px solid #f39c12!important;background
 .cell-data.locked-cell{cursor:not-allowed}
 .weekend-col{background:var(--weekend)!important;color:#c0392b}
 .closure-cell{background:#7f8c8d!important;color:#fff!important}
-.val-CORSO,.val-MIL{background:#8e44ad!important;color:#fff!important;font-weight:700}
+.val-K,.val-CORSO,.val-MIL{background:#8e44ad!important;color:#fff!important;font-weight:700}
 .cell-conflict{box-shadow:inset 0 0 0 2.5px #d00000!important;background-image:repeating-linear-gradient(-45deg,rgba(255,0,0,.15),rgba(255,0,0,.15) 4px,transparent 4px,transparent 8px)!important}
 .conflict-icon{font-size:.62rem;vertical-align:super;margin-left:-1px}
 .spacer-row td{height:12px;background:#fce4d6;border-top:1px solid #000;border-bottom:2px solid #000}
@@ -282,7 +282,7 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
       </div>
 
       <div style="background:#e8f8f5;padding:3px 8px;border-radius:4px;border:1px solid #27ae60"><label style="color:#1e8449;font-weight:700">✏️ Inserisci:</label><select id="userAbsenceType"><option value="V">V (Vacanza)</option><option value="F">F (FLAZ)</option><option value="P">P (Premio Fedeltà)</option></select></div>
-      <div id="adminInsertBox" style="display:none;background:#f3e5f5;padding:3px 8px;border-radius:4px;border:1px solid #8e44ad"><label style="color:#8e44ad;font-weight:700">🛠️ Admin (No Log):</label><select id="adminAbsenceType"><option value="V">V (Vacanza)</option><option value="F">F (FLAZ)</option><option value="P">P (Premio fedeltà)</option><option value="CORSO">CORSO (Formazione/COMBI)</option><option value="MIL">MIL (Militare/PC)</option></select></div>
+      <div id="adminInsertBox" style="display:none;background:#f3e5f5;padding:3px 8px;border-radius:4px;border:1px solid #8e44ad"><label style="color:#8e44ad;font-weight:700">🛠️ Admin (No Log):</label><select id="adminAbsenceType"><option value="V">V (Vacanza)</option><option value="F">F (FLAZ)</option><option value="P">P (Premio fedeltà)</option><option value="K">K (Corso / Formazione)</option><option value="MIL">MIL (Militare/PC)</option></select></div>
     </div>
   </div>
   <div class="table-container"><table id="vacationTable" class="excel-table"><thead id="calHeader"></thead><tbody id="calBody"></tbody></table></div>
@@ -1144,7 +1144,7 @@ function validaDateTornate() {
 }
 
 function getAbsenceCellColor(tipo, tornataNum) {
-  if (tipo === 'CORSO' || tipo === 'MIL') return {bg:"#8e44ad", fg:"#ffffff"};
+  if (tipo === 'K' || tipo === 'CORSO' || tipo === 'MIL') return {bg:"#8e44ad", fg:"#ffffff"};
   const tIndex = (Number(tornataNum) || 1) - 1;
   const tObj = appState.config.tornate[tIndex] || appState.config.tornate[0] || {colorV:"#ffff00",colorF:"#bfbfbf",colorP:"#ff99cc"};
   if (tipo === 'V') return {bg: tObj.colorV || "#ffff00", fg:"#000000"};
@@ -1244,7 +1244,6 @@ function getUserWeekRecord(nrPers, w) {
   return null;
 }
 
-// Calcola V, F, P e i punti per l'anno successivo (anche se V, F, P sono state inserite dall'Admin per conto del collaboratore!)
 function calcolaTotaliUtente(nrPers) {
   let v = 0, f = 0, p = 0, sommaPunti = 0;
   appState.weeksMap.forEach(w => {
@@ -1269,7 +1268,6 @@ function formatQuotaCell(used, maxAllowed) {
   return {text:`${used}/${allowed}`, cls:"quota-partial"};
 }
 
-// IN MODALITÀ ADMIN IL BLOCCO RIGIDO È SEMPRE DISATTIVATO!
 function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
   if (appState.isAdmin) return null;
 
@@ -1364,8 +1362,7 @@ function analizzaProblematicheCalendario() {
         const rec = getUserWeekRecord(u.nrPersonale, w);
         if (rec) {
           assentiGruppo.push({user:u, rec:rec});
-          // CORSO e MIL sono assenze di servizio inserite dall'Admin, quindi non generano mai warning di "Genere Assenza Non Consentito"
-          if (rec.tipo !== 'CORSO' && rec.tipo !== 'MIL' && Array.isArray(rule.allowedTypes) && rule.allowedTypes.length > 0 && !rule.allowedTypes.includes(rec.tipo)) {
+          if (rec.tipo !== 'K' && rec.tipo !== 'CORSO' && rec.tipo !== 'MIL' && Array.isArray(rule.allowedTypes) && rule.allowedTypes.length > 0 && !rule.allowedTypes.includes(rec.tipo)) {
             const msg = `Tipo assenza '${rec.tipo}' non previsto nella ${tAtt ? tAtt.nome : 'Tornata '+numTornata} dalla regola "${rule.label || rule.targetGroup}" (consentiti: ${rule.allowedTypes.join(',')})`;
             const cKey = `${u.nrPersonale}_${w.key}`;
             if (!cellWarnings[cKey]) cellWarnings[cKey] = [];
@@ -1504,16 +1501,17 @@ function renderAnnualWeeklyView() {
       const foundRec = getUserWeekRecord(user.nrPersonale, w), warnList = appState.cellWarningsMap[`${user.nrPersonale}_${w.key}`];
 
       if (foundRec) {
-        const colObj = getAbsenceCellColor(foundRec.tipo, foundRec.tornata);
+        const displayTipo = foundRec.tipo === 'CORSO' ? 'K' : foundRec.tipo;
+        const colObj = getAbsenceCellColor(displayTipo, foundRec.tornata);
         td.style.backgroundColor = colObj.bg;
         td.style.color = colObj.fg;
         if (warnList && warnList.length > 0) {
           td.classList.add("cell-conflict");
-          td.innerHTML = `${foundRec.tipo}<span class="conflict-icon">⚠️</span>`;
+          td.innerHTML = `${displayTipo}<span class="conflict-icon">⚠️</span>`;
           td.title = `⚠️ PROBLEMATICA:\n• ` + warnList.join("\n• ");
         } else {
-          td.innerText = foundRec.tipo;
-          td.title = `${foundRec.tipo} (${foundRec.tornata || 1}ª Tornata - ${w.punti} pt)` + (fmt.comment ? ` - ${fmt.comment}` : "");
+          td.innerText = displayTipo;
+          td.title = `${displayTipo} (${foundRec.tornata || 1}ª Tornata - ${w.punti} pt)` + (fmt.comment ? ` - ${fmt.comment}` : "");
         }
       } else if (fmt.comment) td.title = `${fmt.comment} (${w.punti} pt)`;
 
@@ -1601,7 +1599,6 @@ async function clickSettimanaIntera(userObj, weekObj) {
   const tipoScelto = appState.isAdmin ? document.getElementById("adminAbsenceType").value : document.getElementById("userAbsenceType").value;
   const nuovoValore = exRec ? "" : tipoScelto;
 
-  // Il controllo di blocco viene eseguito SOLO per i collaboratori normali (in Modalità Admin è completamente disattivato)
   if (!appState.isAdmin && nuovoValore !== "") {
     const msgB = verificaBloccoPlausibilitaEConsecutive(userObj, weekObj, nuovoValore);
     if (msgB) { alert("🛑 " + msgB); return; }
@@ -1681,10 +1678,11 @@ function renderDailyView() {
       else {
         const rec = appState.pianificazione[cellKey];
         if (rec) {
-          const colObj = getAbsenceCellColor(rec.tipo, rec.tornata);
+          const displayTipo = rec.tipo === 'CORSO' ? 'K' : rec.tipo;
+          const colObj = getAbsenceCellColor(displayTipo, rec.tornata);
           td.style.backgroundColor = colObj.bg; td.style.color = colObj.fg;
-          if (warnList && warnList.length > 0) { td.classList.add("cell-conflict"); td.innerHTML = `${rec.tipo}<span class="conflict-icon">⚠️</span>`; td.title = warnList.join("\n"); }
-          else td.innerText = rec.tipo;
+          if (warnList && warnList.length > 0) { td.classList.add("cell-conflict"); td.innerHTML = `${displayTipo}<span class="conflict-icon">⚠️</span>`; td.title = warnList.join("\n"); }
+          else td.innerText = displayTipo;
         }
         if (appState.isAdmin || (isMyRow && tAtt !== null)) { td.classList.add("editable"); td.onclick = () => clickSingoloGiorno(user, d); }
         else td.classList.add("locked-cell");
