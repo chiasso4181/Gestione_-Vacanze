@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piano Vacanze - Dogana Chiasso</title>
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
 <style>
 :root{--primary:#2c3e50;--secondary:#3498db;--accent:#e74c3c;--success:#27ae60;--bg:#f4f7f6;--weekend:#f9ebea;--pink-school:#ffccff}
 body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);margin:0;color:#333}
@@ -13,6 +14,7 @@ body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);margin:0;colo
 .btn{padding:8px 14px;border:none;border-radius:4px;cursor:pointer;font-weight:700;color:#fff;background:var(--secondary);font-size:.88rem}
 .btn:hover{opacity:.9}
 .btn-sync{background:#16a085;border:1px solid #1abc9c;display:inline-flex;align-items:center;gap:5px}
+.btn-export{background:#1e8449;border:2px solid #a9dfbf;display:inline-flex;align-items:center;gap:5px}
 .btn-report-prob{background:#d35400;border:2px solid #f1c40f}
 .btn-ranking{background:#f39c12;color:#000;border:2px solid #fff}
 .btn-logout{background:var(--accent)}
@@ -53,7 +55,7 @@ select,input{padding:5px 8px;font-size:.85rem;border-radius:4px;border:1px solid
 table.excel-table{border-collapse:collapse;width:max-content;min-width:100%;font-family:Arial,sans-serif}
 table.excel-table th,table.excel-table td{border:1px solid #555;text-align:center;font-size:.78rem;box-sizing:border-box;padding:0}
 
-/* COLONNE SINISTRE STICKY: Colonna Nome allargata a 215px per mostrare Grado + Cognome Nome + (Funzione) senza tagli */
+/* COLONNE SINISTRE STICKY */
 .sticky-c1{position:sticky;left:0;width:62px;min-width:62px;max-width:62px;z-index:20;background:#d9d9d9;font-weight:700;font-size:.72rem!important}
 .sticky-c2{position:sticky;left:62px;width:215px;min-width:215px;max-width:215px;z-index:20;background:#fff;text-align:left!important;padding:2px 6px!important;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sticky-c3{position:sticky;left:277px;width:48px;min-width:48px;max-width:48px;z-index:20;background:#fff;font-weight:700}
@@ -66,7 +68,7 @@ table.hide-extra-cols .collapsible-col{display:none!important}
 table.hide-extra-cols .sticky-c2{left:0!important;width:205px!important;min-width:205px!important;max-width:205px!important;border-right:2px solid #000!important}
 table.hide-extra-cols .summary-label{left:0!important;border-right:2px solid #000!important}
 
-/* MODALITÀ ADATTA TUTTO L'ANNO: Ridimensiona solo le 53 colonne delle settimane senza toccare le colonne fisse di sinistra */
+/* MODALITÀ ADATTA TUTTO L'ANNO */
 table.fit-year-screen .row-ranges th:not(.sticky-c1):not(.sticky-c2):not(.sticky-c3):not(.sticky-c4):not(.sticky-c5):not(.sticky-c6):not(.sticky-c7){width:var(--week-fit-w,19px)!important;min-width:var(--week-fit-w,19px)!important;max-width:var(--week-fit-w,19px)!important;height:78px!important}
 table.fit-year-screen .vertical-range{font-size:.64rem!important;letter-spacing:-.3px}
 table.fit-year-screen .cell-data{width:var(--week-fit-w,19px)!important;min-width:var(--week-fit-w,19px)!important;max-width:var(--week-fit-w,19px)!important;font-size:.7rem!important}
@@ -85,6 +87,7 @@ thead .sticky-c1,thead .sticky-c2,thead .sticky-c3,thead .sticky-c4,thead .stick
 .row-ranges th{position:sticky;top:25px;z-index:25;background:#fff;color:#000;font-weight:700;height:86px;width:28px;min-width:28px;max-width:28px;vertical-align:middle;border-bottom:1px solid #000!important}
 .vertical-range{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;display:inline-block;font-size:.72rem}
 .has-comment{position:relative}
+.sticky-c2.has-comment{position:sticky!important;text-align:left!important;padding-left:6px!important}
 .has-comment::after{content:'';position:absolute;top:0;right:0;border-width:0 6px 6px 0;border-style:solid;border-color:transparent #d00000 transparent transparent}
 .row-weeknums th{position:sticky;top:111px;z-index:25;background:#fff;color:#000;font-weight:700;font-size:.78rem;height:22px;border-bottom:1px solid #000!important}
 .row-weekpts th{position:sticky;top:133px;z-index:25;background:#fef9e7;color:#b7950b;font-weight:700;font-size:.68rem;height:18px;border-bottom:2px solid #000!important}
@@ -245,12 +248,13 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
   </div>
 </div>
 
-<!-- BARRA DI NAVIGAZIONE -->
+<!-- BARRA DI NAVIGAZIONE CON PULSANTE ESPORTA EXCEL SEMPRE VISIBILE -->
 <div class="navbar">
   <h1>Dogana Chiasso - Pianificazione Vacanze <span id="navYear">2027</span></h1>
   <div class="nav-right">
     <span id="userBadge" style="font-size:.84rem"></span>
-    <button type="button" class="btn btn-sync" id="btnManualSync" onclick="sincronizzaOraManuale()" title="Scarica subito gli ultimi aggiornamenti dal foglio Google (Auto-sync attivo ogni 90 sec.)">🔄 Sincronizza <small id="lastSyncTime" style="font-weight:400;font-size:.72rem;opacity:.9"></small></button>
+    <button type="button" class="btn btn-sync" id="btnManualSync" onclick="sincronizzaOraManuale()" title="Scarica subito gli ultimi aggiornamenti dal foglio Google">🔄 Sincronizza <small id="lastSyncTime" style="font-weight:400;font-size:.72rem;opacity:.9"></small></button>
+    <button type="button" class="btn btn-export" id="btnExportExcel" onclick="esportaCalendarioExcelFormattato()" title="Scarica il calendario completo in formato Excel (.xlsx) con colori, commenti e formule">📥 Esporta Excel (.xlsx)</button>
     <button type="button" class="btn btn-ranking" id="btnOpenRanking" onclick="apriModaleRanking()">🏆 Graduatoria / Turni Ranking</button>
     <button type="button" class="btn btn-report-prob" id="btnReportProb" style="display:none" onclick="apriModaleReportProblematiche()">⚠️ Report Problematiche (<span id="badgeProbCount">0</span>)</button>
     <button type="button" class="btn" id="btnSwitchView" style="display:none;background:#8e44ad" onclick="toggleView()">📅 Torna al Calendario</button>
@@ -322,7 +326,7 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
           <h3 style="margin:0;color:#8e44ad">Programmazione Tornate, Attivazione Manuale & Colori Assenze (V, F, PF)</h3>
           <small style="color:#555">I periodi delle 3 tornate non possono sovrapporsi. Puoi anche attivare manualmente 1 sola tornata: <b>varranno esclusivamente le regole e i colori della tornata attiva!</b></small>
         </div>
-        <div style="display:flex;gap:10px;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <label style="font-weight:700;font-size:.85rem;color:#2c3e50">Stato / Override Manuale:</label>
           <select id="manualTornataSelect" onchange="cambiaOverrideManualeTornata()" style="font-weight:700;border:2px solid #8e44ad;background:#f3e5f5">
             <option value="AUTO">🕒 Automatico (In base alle date impostate)</option>
@@ -331,7 +335,8 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
             <option value="3">🟢 FORZA ATTIVA ORA: 3ª Tornata (3° Giro)</option>
             <option value="CLOSED">🔴 DISATTIVA TUTTE (Pianificazione Bloccata)</option>
           </select>
-          <button type="button" class="btn" style="background:var(--success);padding:10px 28px;font-size:1rem" onclick="salvaTuttoSuGoogle()">💾 Salva</button>
+          <button type="button" class="btn" id="btnExportExcelAdmin" style="background:#1e8449;padding:10px 18px;font-size:.95rem" onclick="esportaCalendarioExcelFormattato()">📥 Esporta Calendario Excel (.xlsx)</button>
+          <button type="button" class="btn" style="background:var(--success);padding:10px 24px;font-size:1rem" onclick="salvaTuttoSuGoogle()">💾 Salva</button>
         </div>
       </div>
 
@@ -722,7 +727,6 @@ function aggiornaTimestampSync() {
   if (btn) btn.innerHTML = `🔄 Sincronizza <small id="lastSyncTime" style="font-weight:400;font-size:.72rem;opacity:.9">(${hh}:${mm}:${ss})</small>`;
 }
 
-// Calcola la larghezza esatta di ogni colonna settimana per far stare tutto l'anno a schermo senza mai schiacciare le colonne fisse di sinistra
 function aggiornaLarghezzaFitYear() {
   const tbl = document.getElementById("vacationTable");
   if (!tbl || !appState.fitYearScreen) {
@@ -2549,6 +2553,315 @@ async function salvaTuttoSuGoogle() {
     });
     alert(ris.messaggio);
   } catch(e) { alert("Errore salvataggio: " + e.message); }
+}
+
+// =========================================================
+// ESPORTAZIONE CALENDARIO IN EXCEL NATIVO FORMATTATO (.XLSX)
+// Con colori, testo verticale a 90°, bordi, Freeze Panes e Commenti Excel!
+// =========================================================
+async function esportaCalendarioExcelFormattato() {
+  if (typeof ExcelJS === "undefined") {
+    alert("Libreria ExcelJS non ancora caricata. Controlla la connessione internet e riprova.");
+    return;
+  }
+
+  const btn1 = document.getElementById("btnExportExcel");
+  const btn2 = document.getElementById("btnExportExcelAdmin");
+  if (btn1) { btn1.disabled = true; btn1.innerText = "⏳ Creazione Excel..."; }
+  if (btn2) { btn2.disabled = true; btn2.innerText = "⏳ Creazione Excel..."; }
+
+  try {
+    const year = appState.config.anno;
+    const weeks = appState.weeksMap;
+    const utentiDaEsportare = appState.utenti.filter(u => utentePassaFiltroMultiFunzione(u));
+
+    const wb = new ExcelJS.Workbook();
+    const ws = wb.addWorksheet(`Assenze ${year}`, {
+      views: [{ state: 'frozen', xSplit: 7, ySplit: 4 }]
+    });
+
+    const hexToArgb = (hex) => {
+      if (!hex) return "FFFFFFFF";
+      let c = String(hex).replace("#", "").trim();
+      if (c.length === 3) c = c.split('').map(x => x + x).join('');
+      return "FF" + c.toUpperCase();
+    };
+
+    const borderThin = { top:{style:'thin',color:{argb:'FF555555'}}, left:{style:'thin',color:{argb:'FF555555'}}, bottom:{style:'thin',color:{argb:'FF555555'}}, right:{style:'thin',color:{argb:'FF555555'}} };
+
+    const colWidths = [11, 29, 8, 8, 8, 6, 7];
+    weeks.forEach(() => colWidths.push(4.2));
+    ws.columns = colWidths.map(w => ({ width: w }));
+
+    let monthGroups = [];
+    weeks.forEach(w => {
+      if (monthGroups.length === 0 || monthGroups[monthGroups.length-1].monthName !== w.headerMonth) {
+        monthGroups.push({ monthName: w.headerMonth, count: 1, lastWeekKey: w.key });
+      } else {
+        monthGroups[monthGroups.length-1].count++;
+        monthGroups[monthGroups.length-1].lastWeekKey = w.key;
+      }
+    });
+    const monthEndKeys = new Set(monthGroups.map(mg => mg.lastWeekKey));
+
+    // RIGA 1: TITOLO GIALLO + MESI UNITI
+    const r1 = ws.getRow(1);
+    r1.height = 22;
+    ws.mergeCells(1, 1, 1, 7);
+    const titleCell = ws.getCell(1, 1);
+    titleCell.value = `Assenze ${year}`;
+    titleCell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFFFFF00'} };
+    titleCell.font = { name:'Arial', size:12, bold:true, color:{argb:'FFFF0000'} };
+    titleCell.alignment = { vertical:'middle', horizontal:'center' };
+
+    let colCursor = 8;
+    monthGroups.forEach(mg => {
+      const startC = colCursor;
+      const endC = colCursor + mg.count - 1;
+      if (endC > startC) ws.mergeCells(1, startC, 1, endC);
+      const mCell = ws.getCell(1, startC);
+      mCell.value = mg.monthName;
+      for (let c = startC; c <= endC; c++) {
+        const cell = ws.getCell(1, c);
+        cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFD9D9D9'} };
+        cell.font = { name:'Arial', size:10, bold:true };
+        cell.alignment = { vertical:'middle', horizontal:'center' };
+        cell.border = {
+          top:{style:'medium',color:{argb:'FF000000'}},
+          bottom:{style:'medium',color:{argb:'FF000000'}},
+          left: c === startC ? {style:'medium',color:{argb:'FF000000'}} : {style:'thin',color:{argb:'FF555555'}},
+          right: c === endC ? {style:'medium',color:{argb:'FF000000'}} : {style:'thin',color:{argb:'FF555555'}}
+        };
+      }
+      colCursor += mg.count;
+    });
+
+    // RIGA 2, 3, 4: INTESTAZIONI COLONNE E SETTIMANE VERTICALI
+    ws.getRow(2).height = 68;
+    ws.getRow(3).height = 18;
+    ws.getRow(4).height = 16;
+
+    ws.mergeCells(2, 1, 4, 1);
+    ws.getCell(2, 1).value = "N°";
+    ws.mergeCells(2, 2, 4, 2);
+    ws.getCell(2, 2).value = "Grado / Cognome Nome";
+
+    const headersR2 = ["", "", "V - Vac.", "F - FLAZ", "P - pr.fed.", "%", "Pt."];
+    const headersR3 = ["", "", "Settimane", "Settimane", "Singoli", "%", appState.config.rankingMetric === "MEDIA" ? "Media" : "Tot."];
+
+    for (let c = 1; c <= 7; c++) {
+      if (c >= 3) {
+        ws.getCell(2, c).value = headersR2[c - 1];
+        ws.mergeCells(3, c, 4, c);
+        ws.getCell(3, c).value = headersR3[c - 1];
+      }
+      for (let r = 2; r <= 4; r++) {
+        const cell = ws.getCell(r, c);
+        cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb: c === 7 ? 'FFFEF9E7' : 'FFF2F2F2'} };
+        cell.font = { name:'Arial', size: c >= 3 && r >= 3 ? 8 : 9, bold:true, color:{argb: c === 7 ? 'FFD35400' : 'FF000000'} };
+        cell.alignment = { vertical:'middle', horizontal:'center', wrapText:true };
+        cell.border = Object.assign({}, borderThin, c === 7 ? { right:{style:'medium',color:{argb:'FF000000'}} } : {});
+      }
+    }
+
+    weeks.forEach((w, idx) => {
+      const colIdx = 8 + idx;
+      const fmt = getWeekFormatInfo(w);
+      const hasConflict = appState.weekConflictsSet.has(w.key);
+      const isMonthEnd = monthEndKeys.has(w.key);
+      const bRight = isMonthEnd ? {style:'medium',color:{argb:'FF000000'}} : {style:'thin',color:{argb:'FF555555'}};
+
+      const cR2 = ws.getCell(2, colIdx);
+      cR2.value = w.rangeLabel;
+      cR2.alignment = { vertical:'middle', horizontal:'center', textRotation:90 };
+      cR2.font = { name:'Arial', size:8, bold:true };
+      if (fmt.color) cR2.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+      if (fmt.comment) cR2.note = `Settimana ${w.weekNum}: ${fmt.comment}`;
+      cR2.border = Object.assign({}, borderThin, { right: bRight });
+
+      const cR3 = ws.getCell(3, colIdx);
+      cR3.value = w.weekNum;
+      cR3.alignment = { vertical:'middle', horizontal:'center' };
+      cR3.font = { name:'Arial', size:9, bold:true, color:{argb: hasConflict ? 'FFFFFFFF' : 'FF000000'} };
+      if (hasConflict) cR3.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFE74C3C'} };
+      else if (fmt.color) cR3.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+      cR3.border = Object.assign({}, borderThin, { right: bRight });
+
+      const cR4 = ws.getCell(4, colIdx);
+      cR4.value = `${w.punti}pt`;
+      cR4.alignment = { vertical:'middle', horizontal:'center' };
+      cR4.font = { name:'Arial', size:7.5, bold:true, color:{argb:'FFB7950B'} };
+      cR4.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFFEF9E7'} };
+      cR4.border = Object.assign({}, borderThin, { right: bRight, bottom:{style:'medium',color:{argb:'FF000000'}} });
+    });
+
+    // RIGHE COLLABORATORI
+    let currentRowIdx = 5;
+    utentiDaEsportare.forEach((user, idx) => {
+      const r = ws.getRow(currentRowIdx);
+      r.height = 18;
+      const tot = calcolaTotaliUtente(user.nrPersonale);
+      const qV = formatQuotaCell(tot.vCount, user.dirittoV ?? 5);
+      const qF = formatQuotaCell(tot.fCount, user.dirittoF ?? 5);
+      const qP = formatQuotaCell(tot.pCount, user.dirittoPF ?? 0);
+
+      const c1 = ws.getCell(currentRowIdx, 1);
+      c1.value = user.nrPersonale || (idx + 1);
+      c1.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFD9D9D9'} };
+      c1.font = { name:'Arial', size:8.5, bold:true };
+      c1.alignment = { vertical:'middle', horizontal:'center' };
+      c1.border = borderThin;
+
+      const c2 = ws.getCell(currentRowIdx, 2);
+      c2.value = `${user.grado ? user.grado + ' ' : ''}${user.cognome} ${user.nome} (${user.funzione})`;
+      c2.font = { name:'Arial', size:9, bold:true };
+      c2.alignment = { vertical:'middle', horizontal:'left' };
+      c2.note = buildUserTooltipComment(user).replace(/ \| /g, "\n");
+      c2.border = borderThin;
+
+      const valsLeft = [qV.text, qF.text, qP.text, Number(user.percentuale || 100), Number(tot.displayPunti)];
+      valsLeft.forEach((v, i) => {
+        const cell = ws.getCell(currentRowIdx, 3 + i);
+        cell.value = v;
+        cell.font = { name:'Arial', size:8.5, bold:true, color:{argb: i === 4 ? 'FFD35400' : 'FF000000'} };
+        cell.alignment = { vertical:'middle', horizontal:'center' };
+        if (i === 4) cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFFEF9E7'} };
+        cell.border = Object.assign({}, borderThin, i === 4 ? { right:{style:'medium',color:{argb:'FF000000'}} } : {});
+      });
+
+      weeks.forEach((w, wIdx) => {
+        const colIdx = 8 + wIdx;
+        const cell = ws.getCell(currentRowIdx, colIdx);
+        const fmt = getWeekFormatInfo(w);
+        const foundRec = getUserWeekRecord(user.nrPersonale, w);
+        const warnList = appState.cellWarningsMap[`${user.nrPersonale}_${w.key}`];
+        const isMonthEnd = monthEndKeys.has(w.key);
+        const bRight = isMonthEnd ? {style:'medium',color:{argb:'FF000000'}} : {style:'thin',color:{argb:'FF555555'}};
+
+        if (foundRec) {
+          const dispTipo = foundRec.tipo === 'CORSO' ? 'K' : foundRec.tipo;
+          const colObj = getAbsenceCellColor(dispTipo, foundRec.tornata);
+          cell.value = dispTipo;
+          cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(colObj.bg)} };
+          cell.font = { name:'Arial', size:9, bold:true, color:{argb: warnList && warnList.length > 0 ? 'FFC00000' : hexToArgb(colObj.fg)} };
+          if (warnList && warnList.length > 0) {
+            cell.note = "⚠️ PROBLEMATICA:\n" + warnList.join("\n");
+          }
+        } else if (fmt.color) {
+          cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+        }
+        cell.alignment = { vertical:'middle', horizontal:'center' };
+        cell.border = Object.assign({}, borderThin, { right: bRight });
+      });
+
+      currentRowIdx++;
+    });
+
+    // RIGA SPACER
+    const rSp = ws.getRow(currentRowIdx);
+    rSp.height = 10;
+    for (let c = 1; c <= 7 + weeks.length; c++) {
+      ws.getCell(currentRowIdx, c).fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFFCE4D6'} };
+    }
+    currentRowIdx++;
+
+    // RIGHE RIEPILOGO TOTALI E PERCENTUALI
+    const funzioniAttive = getFunzioniPerCalcoliTotali();
+
+    ws.getRow(currentRowIdx).height = 20;
+    ws.mergeCells(currentRowIdx, 2, currentRowIdx, 7);
+    ws.getCell(currentRowIdx, 2).value = "Assenze complessive";
+    for (let c = 1; c <= 7; c++) {
+      const cell = ws.getCell(currentRowIdx, c);
+      cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb: c === 1 ? 'FFC0C0C0' : 'FFFF99FF'} };
+      cell.font = { name:'Arial', size:9, bold:true };
+      cell.border = Object.assign({}, borderThin, { top:{style:'medium',color:{argb:'FF000000'}}, bottom:{style:'medium',color:{argb:'FF000000'}}, right: c===7 ? {style:'medium',color:{argb:'FF000000'}} : borderThin.right });
+    }
+    weeks.forEach((w, wIdx) => {
+      let cnt = 0;
+      utentiDaEsportare.forEach(u => { if (getUserWeekRecord(u.nrPersonale, w)) cnt++; });
+      const cell = ws.getCell(currentRowIdx, 8 + wIdx);
+      const hasC = appState.weekConflictsSet.has(w.key);
+      const fmt = getWeekFormatInfo(w);
+      cell.value = cnt;
+      cell.alignment = { vertical:'middle', horizontal:'center' };
+      cell.font = { name:'Arial', size:9, bold:true, color:{argb: hasC ? 'FFFFFFFF' : 'FF000000'} };
+      if (hasC) cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'FFFF4D4D'} };
+      else if (fmt.color) cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+      cell.border = Object.assign({}, borderThin, { top:{style:'medium',color:{argb:'FF000000'}}, bottom:{style:'medium',color:{argb:'FF000000'}}, right: monthEndKeys.has(w.key) ? {style:'medium',color:{argb:'FF000000'}} : borderThin.right });
+    });
+    currentRowIdx++;
+
+    let totCombinedPerWeek = new Array(weeks.length).fill(0);
+    funzioniAttive.forEach(fName => {
+      ws.getRow(currentRowIdx).height = 18;
+      ws.mergeCells(currentRowIdx, 2, currentRowIdx, 7);
+      ws.getCell(currentRowIdx, 2).value = `Assenze ${fName} in %`;
+      for (let c = 1; c <= 7; c++) {
+        const cell = ws.getCell(currentRowIdx, c);
+        cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb: c === 1 ? 'FFC0C0C0' : 'FFFCE4D6'} };
+        cell.font = { name:'Arial', size:8.5, bold:true, color:{argb:'FF0044CC'} };
+        cell.border = Object.assign({}, borderThin, c===7 ? { right:{style:'medium',color:{argb:'FF000000'}} } : {});
+      }
+      weeks.forEach((w, wIdx) => {
+        let sumF = 0;
+        utentiDaEsportare.forEach(u => {
+          if (getUserWeekRecord(u.nrPersonale, w)) {
+            const q = (Number(u.percentuale) || 100) / 100;
+            const uR = String(u.funzione || "").trim().toUpperCase();
+            const fUp = String(fName).trim().toUpperCase();
+            if (uR === fUp || uR.includes(fUp)) sumF += q;
+          }
+        });
+        totCombinedPerWeek[wIdx] += sumF;
+        const cell = ws.getCell(currentRowIdx, 8 + wIdx);
+        const fmt = getWeekFormatInfo(w);
+        cell.value = Number(sumF.toFixed(2));
+        cell.numFmt = "0.00";
+        cell.alignment = { vertical:'middle', horizontal:'center' };
+        cell.font = { name:'Arial', size:8, bold:true, color:{argb:'FF0044CC'} };
+        if (fmt.color) cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+        cell.border = Object.assign({}, borderThin, { right: monthEndKeys.has(w.key) ? {style:'medium',color:{argb:'FF000000'}} : borderThin.right });
+      });
+      currentRowIdx++;
+    });
+
+    ws.getRow(currentRowIdx).height = 20;
+    ws.mergeCells(currentRowIdx, 2, currentRowIdx, 7);
+    ws.getCell(currentRowIdx, 2).value = `Assenze complessive ${funzioniAttive.join(" + ")} in %`;
+    for (let c = 1; c <= 7; c++) {
+      const cell = ws.getCell(currentRowIdx, c);
+      cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb: c === 1 ? 'FFC0C0C0' : 'FFFCE4D6'} };
+      cell.font = { name:'Arial', size:8.5, bold:true, color:{argb:'FFCC0000'} };
+      cell.border = Object.assign({}, borderThin, { top:{style:'medium',color:{argb:'FF000000'}}, bottom:{style:'medium',color:{argb:'FF000000'}}, right: c===7 ? {style:'medium',color:{argb:'FF000000'}} : borderThin.right });
+    }
+    weeks.forEach((w, wIdx) => {
+      const cell = ws.getCell(currentRowIdx, 8 + wIdx);
+      const fmt = getWeekFormatInfo(w);
+      cell.value = Number(totCombinedPerWeek[wIdx].toFixed(2));
+      cell.numFmt = "0.00";
+      cell.alignment = { vertical:'middle', horizontal:'center' };
+      cell.font = { name:'Arial', size:8, bold:true, color:{argb:'FFCC0000'} };
+      if (fmt.color) cell.fill = { type:'pattern', pattern:'solid', fgColor:{argb:hexToArgb(fmt.color)} };
+      cell.border = Object.assign({}, borderThin, { top:{style:'medium',color:{argb:'FF000000'}}, bottom:{style:'medium',color:{argb:'FF000000'}}, right: monthEndKeys.has(w.key) ? {style:'medium',color:{argb:'FF000000'}} : borderThin.right });
+    });
+
+    const buffer = await wb.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Piano_Vacanze_Dogana_Chiasso_${year}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    alert("Errore durante l'esportazione Excel: " + err.message);
+  }
+
+  if (btn1) { btn1.disabled = false; btn1.innerText = "📥 Esporta Excel (.xlsx)"; }
+  if (btn2) { btn2.disabled = false; btn2.innerText = "📥 Esporta Calendario Excel (.xlsx)"; }
 }
 
 setInterval(async function() {
