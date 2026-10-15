@@ -23,30 +23,33 @@ body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);margin:0;colo
 .warning-reminder-bar{background:#fff3cd;color:#856404;border-bottom:2px solid #ffeeba;padding:8px 20px;font-size:.86rem;font-weight:700;display:none;justify-content:space-between;align-items:center}
 .ranking-turn-bar{background:#e8f8f5;color:#117864;border-bottom:2px solid #1abc9c;padding:8px 20px;font-size:.88rem;font-weight:700;display:none;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);display:flex;justify-content:center;align-items:center;z-index:9999}
-.modal-card{background:#fff;padding:25px;border-radius:8px;width:410px;box-shadow:0 5px 25px rgba(0,0,0,.4);position:relative;z-index:10000;max-height:90vh;overflow-y:auto}
+.modal-card{background:#fff;padding:25px;border-radius:8px;width:430px;box-shadow:0 5px 25px rgba(0,0,0,.4);position:relative;z-index:10000;max-height:90vh;overflow-y:auto}
 .modal-card.large-modal{width:980px;max-width:96vw}
 .modal-card h2{margin-top:0;color:var(--primary);border-bottom:2px solid #eee;padding-bottom:10px;font-size:1.25rem}
 .btn-switch-mode{width:100%;background:#ecf0f1;color:#2c3e50;border:1px solid #bdc3c7;padding:8px;margin-top:12px;border-radius:4px;cursor:pointer;font-weight:700;font-size:.85rem}
 .view-section{padding:10px 14px;display:none}
 .view-section.active{display:block}
-.controls-bar{background:#fff;padding:8px 12px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.controls-bar{background:#fff;padding:8px 12px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.filters-master-bar{background:#fff;padding:6px 12px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .view-switcher{display:flex;gap:4px;background:#ecf0f1;padding:4px;border-radius:6px}
 .view-btn{border:none;background:transparent;padding:6px 10px;border-radius:4px;font-weight:700;cursor:pointer;color:#2c3e50;font-size:.82rem}
 .view-btn.active{background:var(--secondary);color:#fff}
 .sub-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.83rem}
 select,input{padding:5px 8px;font-size:.85rem;border-radius:4px;border:1px solid #ccc;box-sizing:border-box}
 
-.listbox-multi-roles{width:100%;min-height:82px;border:2px solid var(--secondary);border-radius:4px;padding:2px;background:#fff;outline:none}
-.listbox-multi-roles option{padding:4px 8px;border-bottom:1px dashed #e2e8f0;font-weight:700;cursor:pointer;border-radius:3px;margin-bottom:1px}
+.listbox-multi-roles{width:100%;min-height:95px;border:2px solid var(--secondary);border-radius:4px;padding:2px;background:#fff;outline:none}
+.listbox-multi-roles option{padding:3px 7px;border-bottom:1px dashed #e2e8f0;font-weight:700;cursor:pointer;border-radius:3px;margin-bottom:1px;font-size:.77rem}
 .listbox-multi-roles option:checked{background:var(--secondary) linear-gradient(0deg,var(--secondary) 0%,var(--secondary) 100%);color:#fff}
 
 .multi-role-bar{display:flex;align-items:center;gap:4px;flex-wrap:wrap;background:#f0f3f6;padding:4px 8px;border-radius:6px;border:1px solid #cbd5e1}
-.role-chip{padding:3px 9px;border-radius:14px;border:1px solid #94a3b8;background:#fff;color:#2c3e50;font-size:.76rem;font-weight:700;cursor:pointer;user-select:none;transition:.15s}
+.role-chip{padding:3px 9px;border-radius:14px;border:1px solid #94a3b8;background:#fff;color:#2c3e50;font-size:.75rem;font-weight:700;cursor:pointer;user-select:none;transition:.15s}
 .role-chip:hover{border-color:var(--secondary);background:#ebf5fb}
 .role-chip.active{background:var(--secondary);color:#fff;border-color:#1d6fa5;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.role-chip.active-unita{background:#16a085;color:#fff;border-color:#117864}
+.role-chip.active-gruppo{background:#8e44ad;color:#fff;border-color:#6c3483}
 .role-chip.preset-chip{background:#eaecee;color:#5d6d7e;border-style:dashed}
 
-.table-container{overflow:auto;max-height:75vh;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);border:2px solid #000}
+.table-container{overflow:auto;max-height:73vh;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);border:2px solid #000}
 table.excel-table{border-collapse:collapse;width:max-content;min-width:100%;font-family:Arial,sans-serif}
 table.excel-table th,table.excel-table td{border:1px solid #555;text-align:center;font-size:.78rem;box-sizing:border-box;padding:0}
 
@@ -129,20 +132,23 @@ tr.active-turn-row .sticky-c2{border-left:5px solid #f39c12!important;background
 .form-group label{display:block;margin-bottom:4px;font-weight:700;font-size:.8rem;color:#333}
 .form-group input,.form-group select{width:100%}
 .btn-add{background:var(--success);color:#fff;border:none;padding:9px 15px;border-radius:4px;cursor:pointer;font-weight:700;width:100%;margin-top:5px}
-ul.list-data{list-style:none;padding:0;margin-top:10px;max-height:340px;overflow-y:auto}
-ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-size:.84rem;gap:8px;flex-wrap:wrap}
+ul.list-data{list-style:none;padding:0;margin-top:10px;max-height:360px;overflow-y:auto}
+ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;gap:8px;flex-wrap:wrap}
 .btn-delete{color:var(--accent);cursor:pointer;font-weight:700;border:none;background:transparent;font-size:.95rem}
-.badge{font-size:.72rem;padding:3px 8px;border-radius:10px;font-weight:700;display:inline-block}
-.mini-quota-input{width:46px!important;padding:3px 5px!important;text-align:center;font-weight:700;font-size:.8rem!important}
+.badge{font-size:.7rem;padding:2px 7px;border-radius:10px;font-weight:700;display:inline-block}
+.mini-quota-input{width:44px!important;padding:3px 4px!important;text-align:center;font-weight:700;font-size:.78rem!important}
+.mini-select-input{padding:3px 4px!important;font-weight:700;font-size:.76rem!important;width:auto!important}
 .report-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.84rem}
 .report-table th,.report-table td{border:1px solid #ccc;padding:7px 9px;text-align:left}
 .report-table th{background:#2c3e50;color:#fff}
 .report-table tr:nth-child(even){background:#f9f9f9}
-.pts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px;background:#f8f9fa;padding:10px;border-radius:6px;border:1px solid #ddd;max-height:190px;overflow-y:auto}
+.pts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px;background:#f8f9fa;padding:10px;border-radius:6px;border:1px solid #ddd;max-height:210px;overflow-y:auto}
 .pts-item{display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:4px}
 .pts-item span{font-size:.7rem;font-weight:700;color:#555}
 .pts-item input{width:54px;text-align:center;font-weight:700;padding:2px;font-size:.8rem;margin-top:2px;color:#d35400}
-@media (max-width:950px){.admin-grid,.tornate-grid{grid-template-columns:1fr}}
+.base-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.base-data-box{background:#f8f9fa;padding:8px;border-radius:6px;border:1px solid #e0e0e0}
+@media (max-width:950px){.admin-grid,.tornate-grid,.base-data-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -172,7 +178,14 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
         <div class="form-group"><label>Cognome *</label><input type="text" id="regCognome" placeholder="Es. Giudici" autocomplete="off"></div>
         <div class="form-group"><label>Nome *</label><input type="text" id="regNome" placeholder="Es. Carlo" autocomplete="off"></div>
       </div>
-      <div class="form-group"><label>Funzione / Unità *</label><select id="regFunzione"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>Grado *</label><select id="regGrado"></select></div>
+        <div class="form-group"><label>Funzione (es. Cgr, M, P) *</label><select id="regFunzione"></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Unità *</label><select id="regUnita"></select></div>
+        <div class="form-group"><label>Gruppo *</label><select id="regGruppo"></select></div>
+      </div>
       <div class="form-row" style="background:#f8f9fa;padding:8px;border-radius:4px;border:1px solid #ddd">
         <div class="form-group" style="margin-bottom:0"><label>Diritto V (Sett.) *</label><input type="number" id="regDirV" value="5" min="0" max="8"></div>
         <div class="form-group" style="margin-bottom:0"><label>Diritto F (FLAZ)</label><input type="number" id="regDirF" value="0" min="0" max="5"></div>
@@ -231,11 +244,11 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
   </div>
 </div>
 
-<!-- BARRA DI NAVIGAZIONE CON TASTO SINCRONIZZA + ORARIO ULTIMO AGGIORNAMENTO -->
+<!-- BARRA DI NAVIGAZIONE -->
 <div class="navbar">
   <h1>Dogana Chiasso - Pianificazione Vacanze <span id="navYear">2027</span></h1>
   <div class="nav-right">
-    <span id="userBadge" style="font-size:.85rem"></span>
+    <span id="userBadge" style="font-size:.84rem"></span>
     <button type="button" class="btn btn-sync" id="btnManualSync" onclick="sincronizzaOraManuale()" title="Scarica subito gli ultimi aggiornamenti dal foglio Google (Auto-sync attivo ogni 90 sec.)">🔄 Sincronizza <small id="lastSyncTime" style="font-weight:400;font-size:.72rem;opacity:.9"></small></button>
     <button type="button" class="btn btn-ranking" id="btnOpenRanking" onclick="apriModaleRanking()">🏆 Graduatoria / Turni Ranking</button>
     <button type="button" class="btn btn-report-prob" id="btnReportProb" style="display:none" onclick="apriModaleReportProblematiche()">⚠️ Report Problematiche (<span id="badgeProbCount">0</span>)</button>
@@ -260,6 +273,7 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
 </div>
 
 <div id="viewCalendar" class="view-section active">
+  <!-- BARRA COMANDI VISTA E INSERIMENTO -->
   <div class="controls-bar">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
       <div class="view-switcher">
@@ -275,16 +289,28 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
       <div id="boxMonthSelect" style="display:none"><label><b>Mese:</b> </label><select id="monthSelector" onchange="renderCalendar()"><option value="0">Gennaio</option><option value="1">Febbraio</option><option value="2">Marzo</option><option value="3">Aprile</option><option value="4">Maggio</option><option value="5">Giugno</option><option value="6" selected>Luglio</option><option value="7">Agosto</option><option value="8">Settembre</option><option value="9">Ottobre</option><option value="10">Novembre</option><option value="11">Dicembre</option></select></div>
       <div id="boxWeekSelect" style="display:none"><label><b>Settimana:</b> </label><select id="weekSelector" onchange="renderCalendar()"></select></div>
 
-      <div class="multi-role-bar">
-        <span style="font-weight:700;color:#2c3e50;margin-right:3px">🔍 Funzioni:</span>
-        <div id="multiRoleFilterContainer" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center"></div>
-        <span id="activeFilterSummary" style="font-size:.75rem;color:#2980b9;font-weight:700;margin-left:4px"></span>
-      </div>
-
       <div style="background:#e8f8f5;padding:3px 8px;border-radius:4px;border:1px solid #27ae60"><label style="color:#1e8449;font-weight:700">✏️ Inserisci:</label><select id="userAbsenceType"><option value="V">V (Vacanza)</option><option value="F">F (FLAZ)</option><option value="P">P (Premio Fedeltà)</option></select></div>
       <div id="adminInsertBox" style="display:none;background:#f3e5f5;padding:3px 8px;border-radius:4px;border:1px solid #8e44ad"><label style="color:#8e44ad;font-weight:700">🛠️ Admin (No Log):</label><select id="adminAbsenceType"><option value="V">V (Vacanza)</option><option value="F">F (FLAZ)</option><option value="P">P (Premio fedeltà)</option><option value="K">K (Corso / Formazione)</option><option value="MIL">MIL (Militare/PC)</option></select></div>
     </div>
   </div>
+
+  <!-- BARRA FILTRI COMBINATI MULTI-DIMENSIONALI: FUNZIONI + UNITÀ + GRUPPI -->
+  <div class="filters-master-bar">
+    <div class="multi-role-bar">
+      <span style="font-weight:700;color:#2c3e50;font-size:.78rem">🔍 Funzione:</span>
+      <div id="multiRoleFilterContainer" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center"></div>
+    </div>
+    <div class="multi-role-bar" style="background:#e8f8f5;border-color:#a3e4d7">
+      <span style="font-weight:700;color:#117864;font-size:.78rem">🏢 Unità:</span>
+      <div id="multiUnitaFilterContainer" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center"></div>
+    </div>
+    <div class="multi-role-bar" style="background:#f5eef8;border-color:#d7bde2">
+      <span style="font-weight:700;color:#6c3483;font-size:.78rem">👥 Gruppo:</span>
+      <div id="multiGruppoFilterContainer" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center"></div>
+    </div>
+    <span id="activeFilterSummary" style="font-size:.76rem;color:#c0392b;font-weight:700"></span>
+  </div>
+
   <div class="table-container"><table id="vacationTable" class="excel-table"><thead id="calHeader"></thead><tbody id="calBody"></tbody></table></div>
 </div>
 
@@ -358,55 +384,79 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
 
     <div class="admin-grid">
       <div class="card">
-        <h2>1. Impostazioni Generali Calendario</h2>
+        <h2>1. Impostazioni Generali Calendario & Dati di Base (Gradi, Unità, Gruppi)</h2>
         <div class="form-row">
           <div class="form-group"><label>Anno Calendario</label><input type="number" id="adminYear" value="2027" onchange="updateYear()"></div>
-          <div class="form-group"><label>Max Assenze Annuali per Collaboratore (Settimane)</label><input type="number" id="maxWeeks" value="8"><small style="color:#666;font-size:.75rem">Tetto massimo complessivo annuo (V + F + PF): default 8 sett.</small></div>
+          <div class="form-group"><label>Max Assenze Annuali per Collaboratore (Settimane)</label><input type="number" id="maxWeeks" value="8"><small style="color:#666;font-size:.72rem">Tetto massimo complessivo annuo (V + F + PF): default 8 sett.</small></div>
         </div>
-        <label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:5px">Aggiungi Giornata di Chiusura / Festività</label>
-        <div class="form-row" style="align-items:flex-end">
+
+        <div class="base-data-grid">
+          <div class="base-data-box">
+            <label style="font-weight:700;font-size:.78rem;display:block;margin-bottom:4px">1. Funzioni (es. Cgr, REV, M, P)</label>
+            <div style="display:flex;gap:4px"><input type="text" id="newRoleName" placeholder="Es. M o P" style="padding:4px"><button type="button" class="btn" style="padding:4px 8px;font-size:.75rem" onclick="addBaseItem('funzioni','newRoleName')">+</button></div>
+            <div id="rolesTagContainer" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap"></div>
+          </div>
+          <div class="base-data-box">
+            <label style="font-weight:700;font-size:.78rem;display:block;margin-bottom:4px">2. Gradi (es. Sgtm, Cpl, App)</label>
+            <div style="display:flex;gap:4px"><input type="text" id="newGradoName" placeholder="Es. Sgtm" style="padding:4px"><button type="button" class="btn" style="padding:4px 8px;font-size:.75rem" onclick="addBaseItem('gradi','newGradoName')">+</button></div>
+            <div id="gradiTagContainer" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap"></div>
+          </div>
+          <div class="base-data-box">
+            <label style="font-weight:700;font-size:.78rem;display:block;margin-bottom:4px">3. Unità (es. Unità 1, Unità 3)</label>
+            <div style="display:flex;gap:4px"><input type="text" id="newUnitaName" placeholder="Es. Unità 3" style="padding:4px"><button type="button" class="btn" style="padding:4px 8px;font-size:.75rem" onclick="addBaseItem('unita','newUnitaName')">+</button></div>
+            <div id="unitaTagContainer" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap"></div>
+          </div>
+          <div class="base-data-box">
+            <label style="font-weight:700;font-size:.78rem;display:block;margin-bottom:4px">4. Gruppi (es. Gruppo 3, Gruppo 5)</label>
+            <div style="display:flex;gap:4px"><input type="text" id="newGruppoName" placeholder="Es. Gruppo 5" style="padding:4px"><button type="button" class="btn" style="padding:4px 8px;font-size:.75rem" onclick="addBaseItem('gruppi','newGruppoName')">+</button></div>
+            <div id="gruppiTagContainer" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap"></div>
+          </div>
+        </div>
+
+        <label style="font-weight:700;font-size:.82rem;display:block;margin-bottom:4px">Aggiungi Giornata di Chiusura / Festività</label>
+        <div class="form-row" style="align-items:flex-end;margin-bottom:4px">
           <div class="form-group" style="margin-bottom:0"><input type="date" id="closureDate"></div>
           <div class="form-group" style="margin-bottom:0"><input type="text" id="closureName" placeholder="Es. Pasqua"></div>
-          <div style="flex:.5"><button type="button" class="btn-add" style="margin-top:0" onclick="addClosure()">Aggiungi</button></div>
+          <div style="flex:.5"><button type="button" class="btn-add" style="margin-top:0;padding:6px" onclick="addClosure()">Aggiungi</button></div>
         </div>
-        <ul class="list-data" id="adminClosureList"></ul>
+        <ul class="list-data" id="adminClosureList" style="max-height:110px"></ul>
       </div>
 
       <div class="card">
-        <h2>2. Gestione Collaboratori, Funzioni, Diritti e Punti Anno Prec.</h2>
-        <div style="background:#f8f9fa;padding:10px;border-radius:6px;margin-bottom:12px;border:1px solid #e0e0e0">
-          <label style="font-weight:700;font-size:.82rem;display:block;margin-bottom:5px">Popola Dropdown Funzioni (Salvate nel foglio "Dati_di_Base")</label>
-          <div style="display:flex;gap:8px"><input type="text" id="newRoleName" placeholder="Nuova funzione (es. SDSC)"><button type="button" class="btn" style="background:var(--secondary);white-space:nowrap" onclick="addRoleOption()">+ Aggiungi Funzione</button></div>
-          <div id="rolesTagContainer" style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"></div>
-        </div>
+        <h2>2. Gestione Collaboratori (Grado, Funzione, Unità, Gruppo e Diritti)</h2>
         <div class="form-row" style="margin-bottom:6px">
           <div class="form-group" style="flex:.8;margin-bottom:0"><label>Nr. Pers.</label><input type="text" id="addUserNr" placeholder="Es. 80732494"></div>
           <div class="form-group" style="flex:1.4;margin-bottom:0"><label>Cognome Nome</label><input type="text" id="addUserName" placeholder="Es. Giudici Carlo"></div>
-          <div class="form-group" style="flex:.9;margin-bottom:0"><label>Funzione</label><select id="addUserRole"></select></div>
+          <div class="form-group" style="flex:.8;margin-bottom:0"><label>Grado</label><select id="addUserGrado"></select></div>
+        </div>
+        <div class="form-row" style="margin-bottom:6px">
+          <div class="form-group" style="margin-bottom:0"><label>Funzione (es. Cgr, M, P)</label><select id="addUserRole"></select></div>
+          <div class="form-group" style="margin-bottom:0"><label>Unità</label><select id="addUserUnita"></select></div>
+          <div class="form-group" style="margin-bottom:0"><label>Gruppo</label><select id="addUserGruppo"></select></div>
         </div>
         <div class="form-row" style="background:#f4f9f5;padding:8px;border-radius:6px;border:1px solid #c3e6cb;margin-bottom:8px">
           <div class="form-group" style="margin-bottom:0"><label>% Lav.</label><input type="number" id="addUserPerc" value="100" min="10" max="100" step="5"></div>
           <div class="form-group" style="margin-bottom:0"><label>Diritto V</label><input type="number" id="addUserDirV" value="5" min="0" max="8"></div>
           <div class="form-group" style="margin-bottom:0"><label>Diritto F</label><input type="number" id="addUserDirF" value="0" min="0" max="5"></div>
           <div class="form-group" style="margin-bottom:0"><label>Diritto PF</label><input type="number" id="addUserDirPF" value="0" min="0" max="4"></div>
-          <div class="form-group" style="margin-bottom:0"><label title="Punteggio Anno Precedente (salvato in Storico_Punteggi_Ranking per l'anno precedente)">Pt. Prec.</label><input type="number" id="addUserPtPrec" value="0" step="1"></div>
+          <div class="form-group" style="margin-bottom:0"><label title="Punteggio Anno Precedente">Pt. Prec.</label><input type="number" id="addUserPtPrec" value="0" step="1"></div>
         </div>
         <button type="button" class="btn-add" onclick="addCollaborator()">Aggiungi Collaboratore</button>
         <ul class="list-data" id="adminUserList"></ul>
       </div>
 
+      <!-- RIQUADRO 3: REGOLE DI ASSENZA CON OPZIONI "OGNI SINGOLA UNITÀ" / "OGNI SINGOLO GRUPPO" -->
       <div class="card full-width">
         <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #ecf0f1;padding-bottom:10px;margin-bottom:10px">
-          <h2 style="margin:0;border:none;padding:0">3. Regole di Assenza e Formattazione</h2>
+          <h2 style="margin:0;border:none;padding:0">3. Regole di Assenza e Formattazione (Per Funzione, Unità e/o Gruppo)</h2>
           <button type="button" class="btn" style="background:#e67e22;font-size:.8rem" onclick="ripristinaRegoleDefaultDirettiva()">🔄 Ripristina e Salva Regole Direttiva</button>
         </div>
         <p style="font-size:.82rem;color:#555;margin-top:0">
-          • <b>Logica cumulativa (AND):</b> Tutte le regole attive valgono <b>contemporaneamente in AND</b>.<br>
-          • <b>Vincoli indipendenti:</b> Puoi compilare <b>anche uno solo</b> dei 3 campi qui sotto (lasciando vuoti gli altri due).<br>
-          • <b>Nota Modalità Ranking:</b> Per le funzioni impostate in <i>Modalità Ranking</i> (Riquadro 4), anche il limite di <b>Max Assenze Contemporanee</b> agisce come <b>blocco rigido (🛑)</b> per i collaboratori (mentre in Modalità Admin il blocco è sempre disattivato).
+          • <b>Novità "🔄 OGNI SINGOLO GRUPPO / UNITÀ":</b> Se selezioni <code>🔄 OGNI SINGOLO GRUPPO</code> (o <code>🔄 OGNI SINGOLA UNITÀ</code>), non serve creare 10 regole separate: il sistema applicherà automaticamente il limite <b>dentro ciascun singolo Gruppo (o Unità) separatamente</b>!<br>
+          • <b>Protezione Funzioni Trasversali:</b> Le funzioni blindate come "Solo Funzione" nel Riquadro 4 (es. <code>Cgr</code>, <code>Csq</code>, <code>SDSC</code>, <code>REV</code>, <code>AssD</code>) ignorano automaticamente le regole di Unità/Gruppo create per gli agenti!
         </p>
         <div class="form-row">
-          <div class="form-group" style="flex:1"><label>1) Genere di Regola</label><select id="ruleKind" onchange="toggleRuleBuilderUI()" style="font-weight:700;border:2px solid var(--secondary)"><option value="absence">🛑 Regola di Assenza (Vincoli indipendenti combinati in AND)</option><option value="format">🎨 Regola di Formattazione (Colore e Annotazione Periodo)</option></select></div>
+          <div class="form-group" style="flex:1"><label>1) Genere di Regola</label><select id="ruleKind" onchange="toggleRuleBuilderUI()" style="font-weight:700;border:2px solid var(--secondary)"><option value="absence">🛑 Regola di Assenza (Per Funzione, Unità e/o Gruppo)</option><option value="format">🎨 Regola di Formattazione (Colore e Annotazione Periodo)</option></select></div>
           <div class="form-group" style="flex:1"><label>Modalità Scelta del Periodo</label><select id="rulePeriodType" onchange="togglePeriodInputUI()"><option value="weeks">Per Numero di Settimana/e (es. 1-53 oppure 6, 13, 44, 51, 52)</option><option value="dates">Con Calendario (Data Inizio / Data Fine)</option></select></div>
           <div class="form-group" id="boxRuleWeeks" style="flex:1.2"><label>Numero Settimana o Settimane</label><input type="text" id="ruleWeeksInput" placeholder="Es. 1-53 (Tutto l'anno) oppure 6, 13, 44, 51, 52"></div>
           <div class="form-group" id="boxRuleDates" style="display:none;flex:1.5"><label>Dal / Al (Calendario)</label><div style="display:flex;gap:6px"><input type="date" id="ruleDateStart"><input type="date" id="ruleDateEnd"></div></div>
@@ -419,56 +469,70 @@ ul.list-data li{background:#eef2f5;padding:8px 12px;margin-bottom:6px;border-rad
         </div>
         <div id="sectionAbsenceRule" style="display:block;background:#f8f9fa;padding:15px;border-radius:6px;border-left:4px solid #e74c3c">
           <div class="form-row" style="align-items:flex-start">
-            <div class="form-group" style="flex:.9"><label>Tornata di Scelta</label><select id="absTornata"><option value="1">1ª Tornata (1° Giro)</option><option value="2">2ª Tornata (2° Giro)</option><option value="3">3ª Tornata (3° Giro)</option><option value="TUTTE">Tutte le Tornate</option></select></div>
-            <div class="form-group" style="flex:1.3">
-              <label>Funzione o Gruppo (Scelta Multipla)</label>
-              <select id="absTargetGroup" class="listbox-multi-roles" multiple size="4"></select>
-              <small style="font-size:.7rem;color:#555;display:block;margin-top:2px">💡 Clicca su più voci per combinarle (es. Cgr + Csq)</small>
+            <div class="form-group" style="flex:.8"><label>Tornata di Scelta</label><select id="absTornata"><option value="1">1ª Tornata (1° Giro)</option><option value="2">2ª Tornata (2° Giro)</option><option value="3">3ª Tornata (3° Giro)</option><option value="TUTTE">Tutte le Tornate</option></select></div>
+            
+            <div class="form-group" style="flex:1.1">
+              <label>Funzione/i (Scelta Multipla)</label>
+              <select id="absTargetGroup" class="listbox-multi-roles" multiple size="5"></select>
+              <small style="font-size:.68rem;color:#555;display:block">Es. M, P, Cgr+Csq o TUTTI</small>
             </div>
-            <div class="form-group" style="flex:1.1"><label>Max Assenze Contemporanee (⚠️ / 🛑 in Ranking)</label><input type="number" id="absMaxConcurrent" value="" min="0" max="50" placeholder="Opzionale (es. 2 o 5)"></div>
-            <div class="form-group" style="flex:1.1"><label>Max Sett. Consecutive Collab. (Blocco Rigido 🛑)</label><input type="number" id="absMaxConsecutive" value="" min="1" max="8" placeholder="Opzionale (es. 2 o 3)"></div>
-            <div class="form-group" style="flex:1.2"><label style="color:#c0392b">Max Sett. Totali nel Periodo (Blocco Rigido 🛑)</label><input type="number" id="absMaxTotalInPeriod" value="" min="1" max="8" placeholder="Opzionale (es. 1 o 2)" style="border:2px solid #c0392b;font-weight:700"></div>
+            <div class="form-group" style="flex:1.2">
+              <label>Unità (Facoltativo - Multipla)</label>
+              <select id="absTargetUnita" class="listbox-multi-roles" multiple size="5"></select>
+              <small style="font-size:.68rem;color:#555;display:block">TUTTE, Ogni Singola Unità o specifiche</small>
+            </div>
+            <div class="form-group" style="flex:1.2">
+              <label>Gruppo (Facoltativo - Multipla)</label>
+              <select id="absTargetGruppo" class="listbox-multi-roles" multiple size="5"></select>
+              <small style="font-size:.68rem;color:#555;display:block">TUTTI, Ogni Singolo Gruppo o specifici</small>
+            </div>
+
+            <div class="form-group" style="flex:.95"><label>Max Assenze Contemp. (⚠️ / 🛑)</label><input type="number" id="absMaxConcurrent" value="" min="0" max="50" placeholder="Opzionale (es. 1 o 2)"></div>
+            <div class="form-group" style="flex:.95"><label>Max Sett. Consecutive (🛑)</label><input type="number" id="absMaxConsecutive" value="" min="1" max="8" placeholder="Opzionale (es. 2 o 3)"></div>
+            <div class="form-group" style="flex:.95"><label style="color:#c0392b">Max Sett. Totali Periodo (🛑)</label><input type="number" id="absMaxTotalInPeriod" value="" min="1" max="8" placeholder="Opzionale (es. 1 o 2)" style="border:2px solid #c0392b;font-weight:700"></div>
           </div>
           <div class="form-row" style="margin-bottom:0;align-items:center">
             <div class="form-group" style="flex:1.2;margin-bottom:0"><label>Genere di Assenza Consentito:</label><div style="display:flex;gap:15px;margin-top:6px"><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="chkAllowV" checked style="width:auto"> <b>V</b></label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="chkAllowF" checked style="width:auto"> <b>F</b></label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="chkAllowP" checked style="width:auto"> <b>P</b></label></div></div>
-            <div class="form-group" style="flex:1.5;margin-bottom:0"><label>Descrizione / Nota Regola</label><input type="text" id="absRuleLabel" placeholder="Es. Max 3 settimane consecutive tutto l'anno"></div>
+            <div class="form-group" style="flex:1.5;margin-bottom:0"><label>Descrizione / Nota Regola</label><input type="text" id="absRuleLabel" placeholder="Es. Max 1 assente M per ogni singolo Gruppo"></div>
           </div>
         </div>
         <button type="button" class="btn-add" style="margin-top:12px" onclick="addUnifiedRule()">+ Aggiungi Regola al Calendario</button>
         <ul class="list-data" id="adminUnifiedRulesList"></ul>
       </div>
 
-      <!-- RIQUADRO 4: PUNTEGGI SETTIMANALI, MODALITÀ RANKING & CONSOLIDAMENTO -->
+      <!-- RIQUADRO 4: MODALITÀ RANKING, BLINDATURA FUNZIONI TRASVERSALI & PUNTEGGI -->
       <div class="card full-width" style="border-top:4px solid #f39c12">
-        <h2>4. Punteggi Settimanali, Modalità Ranking & Consolidamento Fine Anno (Foglio "Storico_Punteggi_Ranking")</h2>
+        <h2>4. Ambito Funzioni (Trasversali vs Unità/Gruppo), Modalità Ranking & Punteggi Settimanali</h2>
         <div class="form-row" style="align-items:flex-start">
-          <div style="flex:1.2;background:#fef9e7;padding:12px;border-radius:6px;border:1px solid #f39c12">
-            <label style="font-weight:700;font-size:.86rem;color:#d35400;display:block;margin-bottom:6px">🏆 1) Configurazione Modalità Ranking (Graduatoria a turni):</label>
-            
+          <div style="flex:1.3;background:#fef9e7;padding:12px;border-radius:6px;border:1px solid #f39c12">
+            <label style="font-weight:700;font-size:.86rem;color:#d35400;display:block;margin-bottom:4px">🛡️ A) Blindatura Funzioni Trasversali (Ignora regole di Unità/Gruppo):</label>
+            <small style="color:#555;display:block;margin-bottom:6px">Le funzioni attivate in blu qui sotto (es. <b>Cgr, Csq, SDSC, REV, AssD</b>) seguono <b>SOLO le regole della propria Funzione</b> e ignorano qualsiasi regola creata per le Unità o i Gruppi!</small>
+            <div id="functionOnlyRolesContainer" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"></div>
+
+            <label style="font-weight:700;font-size:.86rem;color:#d35400;display:block;margin-bottom:4px;border-top:1px dashed #e67e22;padding-top:8px">🏆 B) Funzioni in "Modalità Ranking" (Graduatoria a turni e Blocco Rigido):</label>
+            <div id="rankingRolesContainer" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"></div>
+
             <div class="form-group" style="margin-bottom:8px">
-              <label style="font-size:.78rem">Metodo di Calcolo Punti per la Graduatoria:</label>
+              <label style="font-size:.76rem">Metodo di Calcolo Punti per la Graduatoria:</label>
               <select id="selRankingMetric" onchange="cambiaMetodoCalcoloRanking()" style="font-weight:700;border:1px solid #d35400">
                 <option value="TOTALE">Somma Totale Punti delle settimane scelte (es. 50, 65, 75 pt)</option>
                 <option value="MEDIA">Media Punti per giorno pianificato (Punti Totali / Giorni, es. 3.33, 4.33)</option>
               </select>
             </div>
-
-            <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:4px">Attiva/Disattiva le Funzioni che lavorano in Modalità Ranking:</label>
-            <div id="rankingRolesContainer" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"></div>
             
-            <div style="border-top:1px dashed #e67e22;padding-top:10px;display:flex;flex-direction:column;gap:8px">
+            <div style="border-top:1px dashed #e67e22;padding-top:8px;display:flex;flex-direction:column;gap:6px">
               <div style="display:flex;gap:6px;align-items:center">
-                <label style="font-size:.78rem;font-weight:700;white-space:nowrap">Salva punteggi attuali come anno:</label>
+                <label style="font-size:.76rem;font-weight:700;white-space:nowrap">Salva punteggi attuali come anno:</label>
                 <select id="selConsolidateTargetYear" style="font-weight:700"></select>
               </div>
-              <button type="button" class="btn" id="btnAdminConsolidateYear" style="background:#27ae60;width:100%;padding:9px" onclick="consolidaPunteggiAnnoConcluso()">💾 Consolida e Salva Punteggi nel Foglio "Storico_Punteggi_Ranking"</button>
+              <button type="button" class="btn" id="btnAdminConsolidateYear" style="background:#27ae60;width:100%;padding:8px" onclick="consolidaPunteggiAnnoConcluso()">💾 Consolida e Salva Punteggi nel Foglio "Storico_Punteggi_Ranking"</button>
               <button type="button" class="btn" style="background:#d35400;width:100%" onclick="apriModaleRanking()">📋 Apri Graduatoria Ufficiale, Turni & Archivio Storico</button>
             </div>
           </div>
 
-          <div style="flex:1.6">
+          <div style="flex:1.5">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-              <label style="font-weight:700;font-size:.85rem">🎯 2) Punteggi Settimanali (Salvati nelle colonne B e C del foglio "Dati_di_Base"):</label>
+              <label style="font-weight:700;font-size:.85rem">🎯 C) Punteggi Settimanali (Colonne B e C del foglio "Dati_di_Base"):</label>
               <button type="button" class="btn" style="background:#7f8c8d;padding:4px 10px;font-size:.75rem" onclick="ripristinaPunteggiDefault()">Ripristina Punteggi Direttiva</button>
             </div>
             <div id="adminPointsGrid" class="pts-grid"></div>
@@ -519,16 +583,16 @@ function clearAuthCookie() {
 function getDefaultUnifiedRules() {
   return [
     {id:101,kind:"format",periodType:"weeks",weeks:"1,6,13,24-34,44,51,52",start:"",end:"",color:"#ffccff",comment:"Vacanze scolastiche / Periodi di picco"},
-    {id:102,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1-53",start:"",end:"",targetGroup:"TUTTI",maxConcurrent:"",maxConsecutive:3,maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Regola Generale Tutto l'Anno: Max 3 settimane consecutive"},
-    {id:103,kind:"absence",tornata:"1",periodType:"weeks",weeks:"24-34",start:"2027-06-14",end:"2027-08-29",targetGroup:"TUTTI",maxConcurrent:"",maxConsecutive:2,maxTotalInPeriod:2,allowedTypes:["V","F"],label:"Regola 1° Giro Estivo (sett. 24-34): Max 2 settimane nel periodo e no PF"},
-    {id:104,kind:"absence",tornata:"1",periodType:"weeks",weeks:"6,13,44,51,52",start:"",end:"",targetGroup:"TUTTI",maxConcurrent:"",maxConsecutive:"",maxTotalInPeriod:1,allowedTypes:["V","F"],label:"Regola 1° Giro Altre Vacanze Scolastiche (Carnevale, Pasqua, Morti, Natale): Max 1 settimana totale"},
-    {id:105,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-26,28-30,35-50",start:"",end:"",targetGroup:"Cgr",maxConcurrent:2,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard Cgr (Max 2 contemporanei)"},
-    {id:106,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-26,28-30,35-50",start:"",end:"",targetGroup:"Csq+SDSC",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard Csq/SDSC (Max 3 contemporanei)"},
-    {id:107,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1,31-34,51,52",start:"",end:"",targetGroup:"Cgr",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Alta Stagione Cgr (Max 3 contemporanei)"},
-    {id:108,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1,31-34,51,52",start:"",end:"",targetGroup:"Csq+SDSC",maxConcurrent:4,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Alta Stagione Csq/SDSC (Max 4 contemporanei)"},
-    {id:109,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"27",start:"",end:"",targetGroup:"Cgr+Csq+SDSC",maxConcurrent:2,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Sett. 27 Formazione Arma da fuoco (Max 2 contemporanei)"},
-    {id:110,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-30,35-50",start:"",end:"",targetGroup:"REV",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard REV (Max 3 contemporanei)"},
-    {id:111,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-30,35-50",start:"",end:"",targetGroup:"AssD",maxConcurrent:6,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard AssD (Max 6 contemporanei)"}
+    {id:102,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1-53",start:"",end:"",targetGroup:"TUTTI",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:"",maxConsecutive:3,maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Regola Generale Tutto l'Anno: Max 3 settimane consecutive"},
+    {id:103,kind:"absence",tornata:"1",periodType:"weeks",weeks:"24-34",start:"2027-06-14",end:"2027-08-29",targetGroup:"TUTTI",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:"",maxConsecutive:2,maxTotalInPeriod:2,allowedTypes:["V","F"],label:"Regola 1° Giro Estivo (sett. 24-34): Max 2 settimane nel periodo e no PF"},
+    {id:104,kind:"absence",tornata:"1",periodType:"weeks",weeks:"6,13,44,51,52",start:"",end:"",targetGroup:"TUTTI",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:"",maxConsecutive:"",maxTotalInPeriod:1,allowedTypes:["V","F"],label:"Regola 1° Giro Altre Vacanze Scolastiche (Carnevale, Pasqua, Morti, Natale): Max 1 settimana totale"},
+    {id:105,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-26,28-30,35-50",start:"",end:"",targetGroup:"Cgr",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:2,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard Cgr (Max 2 contemporanei)"},
+    {id:106,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-26,28-30,35-50",start:"",end:"",targetGroup:"Csq+SDSC",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard Csq/SDSC (Max 3 contemporanei)"},
+    {id:107,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1,31-34,51,52",start:"",end:"",targetGroup:"Cgr",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Alta Stagione Cgr (Max 3 contemporanei)"},
+    {id:108,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"1,31-34,51,52",start:"",end:"",targetGroup:"Csq+SDSC",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:4,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Alta Stagione Csq/SDSC (Max 4 contemporanei)"},
+    {id:109,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"27",start:"",end:"",targetGroup:"Cgr+Csq+SDSC",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:2,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Sett. 27 Formazione Arma da fuoco (Max 2 contemporanei)"},
+    {id:110,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-30,35-50",start:"",end:"",targetGroup:"REV",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:3,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard REV (Max 3 contemporanei)"},
+    {id:111,kind:"absence",tornata:"TUTTE",periodType:"weeks",weeks:"2-30,35-50",start:"",end:"",targetGroup:"AssD",targetUnita:"TUTTE",targetGruppo:"TUTTI",maxConcurrent:6,maxConsecutive:"",maxTotalInPeriod:"",allowedTypes:["V","F","P"],label:"Limite Standard AssD (Max 6 contemporanei)"}
   ];
 }
 
@@ -544,15 +608,23 @@ let appState = {
   calendarMode:'year', utenteLoggato:null, isAdmin:false,
   hideExtraCols:false,
   fitYearScreen:false,
-  selectedFilterRoles:[],
+  selectedFilterRoles:[],  // Filtro multiplo Funzioni nel layout
+  selectedFilterUnita:[],  // Filtro multiplo Unità nel layout
+  selectedFilterGruppi:[], // Filtro multiplo Gruppi nel layout
   config:{
     manualActiveTornata:"AUTO",
     tornate:getDefaultTornateList(),
     rankingRoles:["REV","AssD"],
+    functionOnlyRoles:["Cgr","Csq","SDSC","REV","AssD"], // Funzioni trasversali che ignorano le regole di Unità/Gruppo!
     rankingMetric:"TOTALE",
     rankingTurnIndex:{},
     punteggiSettimane:Object.assign({}, DEFAULT_PUNTEGGI_DIRETTIVA),
-    anno:2027, maxWeeks:8, funzioni:["Cgr","Csq","SDSC","REV","AssD","Agente P"], closures:[], unifiedRules:getDefaultUnifiedRules()
+    anno:2027, maxWeeks:8,
+    funzioni:["Cgr","Csq","SDSC","REV","AssD","M","P"],
+    gradi:["Sgtm","Aiut","Cpl","App","AssD","Spec"],
+    unita:["Unità 1","Unità 2","Unità 3","Unità 4"],
+    gruppi:["Gruppo 1","Gruppo 2","Gruppo 3","Gruppo 4","Gruppo 5","Gruppo 6"],
+    closures:[], unifiedRules:getDefaultUnifiedRules()
   },
   utenti:[], pianificazione:{}, divergenze:[], storicoRanking:[], problematicheAttive:[], cellWarningsMap:{}, weekConflictsSet:new Set(), allYearDays:[], weeksMap:[]
 };
@@ -598,20 +670,31 @@ function applicaSessioneUtente(utenteObj, isAdminFlag) {
 }
 
 function abilitaMultiSelectSenzaCtrl() {
-  const sel = document.getElementById("absTargetGroup");
-  if (!sel) return;
-  sel.addEventListener("mousedown", function(e) {
-    if (e.target.tagName !== "OPTION") return;
-    e.preventDefault();
-    const opt = e.target;
-    if (opt.value === "TUTTI") {
-      Array.from(sel.options).forEach(o => o.selected = (o.value === "TUTTI"));
-    } else {
-      const optTutti = Array.from(sel.options).find(o => o.value === "TUTTI");
-      if (optTutti) optTutti.selected = false;
-      opt.selected = !opt.selected;
-      if (!Array.from(sel.selectedOptions).length && optTutti) optTutti.selected = true;
-    }
+  [
+    {id:"absTargetGroup", exclusives:["TUTTI"]},
+    {id:"absTargetUnita", exclusives:["TUTTE","OGNI_UNITA"]},
+    {id:"absTargetGruppo", exclusives:["TUTTI","OGNI_GRUPPO"]}
+  ].forEach(cfg => {
+    const sel = document.getElementById(cfg.id);
+    if (!sel) return;
+    sel.addEventListener("mousedown", function(e) {
+      if (e.target.tagName !== "OPTION") return;
+      e.preventDefault();
+      const opt = e.target;
+      if (cfg.exclusives.includes(opt.value)) {
+        Array.from(sel.options).forEach(o => o.selected = (o.value === opt.value));
+      } else {
+        cfg.exclusives.forEach(exVal => {
+          const exOpt = Array.from(sel.options).find(o => o.value === exVal);
+          if (exOpt) exOpt.selected = false;
+        });
+        opt.selected = !opt.selected;
+        if (!Array.from(sel.selectedOptions).length) {
+          const defOpt = Array.from(sel.options).find(o => o.value === cfg.exclusives[0]);
+          if (defOpt) defOpt.selected = true;
+        }
+      }
+    });
   });
 }
 
@@ -668,7 +751,7 @@ function assicuraRegolaAnnualeMax3Consecutive(rulesArray) {
   if (!haRegolaAnnuale3) {
     rulesArray.splice(1, 0, {
       id: 102, kind: "absence", tornata: "TUTTE", periodType: "weeks", weeks: "1-53", start: "", end: "",
-      targetGroup: "TUTTI", maxConcurrent: "", maxConsecutive: 3, maxTotalInPeriod: "", allowedTypes: ["V","F","P"],
+      targetGroup: "TUTTI", targetUnita: "TUTTE", targetGruppo: "TUTTI", maxConcurrent: "", maxConsecutive: 3, maxTotalInPeriod: "", allowedTypes: ["V","F","P"],
       label: "Regola Generale Tutto l'Anno: Max 3 settimane consecutive"
     });
     modified = true;
@@ -705,10 +788,14 @@ async function caricaDatiServer(silentBackground = false) {
           appState.config.manualActiveTornata = td.manualActive || "AUTO";
           if (Array.isArray(td.list)) appState.config.tornate = td.list.map(t => Object.assign({colorV:"#ffff00",colorF:"#bfbfbf",colorP:"#ff99cc"}, t));
           if (Array.isArray(td.rankingRoles)) appState.config.rankingRoles = td.rankingRoles;
+          if (Array.isArray(td.functionOnlyRoles)) appState.config.functionOnlyRoles = td.functionOnlyRoles;
           if (td.rankingMetric) appState.config.rankingMetric = td.rankingMetric;
           if (td.rankingTurnIndex && typeof td.rankingTurnIndex === "object") appState.config.rankingTurnIndex = td.rankingTurnIndex;
         }
         if (Array.isArray(ris.config.funzioni) && ris.config.funzioni.length > 0) appState.config.funzioni = ris.config.funzioni;
+        if (Array.isArray(ris.config.gradi) && ris.config.gradi.length > 0) appState.config.gradi = ris.config.gradi;
+        if (Array.isArray(ris.config.unita) && ris.config.unita.length > 0) appState.config.unita = ris.config.unita;
+        if (Array.isArray(ris.config.gruppi) && ris.config.gruppi.length > 0) appState.config.gruppi = ris.config.gruppi;
         if (ris.config.punteggiSettimane && Object.keys(ris.config.punteggiSettimane).length > 0) {
           appState.config.punteggiSettimane = ris.config.punteggiSettimane;
         }
@@ -812,6 +899,22 @@ function isRoleInRankingMode(roleName) {
   if (!roleName || !Array.isArray(appState.config.rankingRoles)) return false;
   const rUp = String(roleName).trim().toUpperCase();
   return appState.config.rankingRoles.some(x => String(x).trim().toUpperCase() === rUp);
+}
+
+// Verifica se una Funzione è blindata come "Solo Regole di Funzione" (ignora regole di Unità/Gruppo)
+function isRoleFunctionOnly(roleName) {
+  if (!roleName || !Array.isArray(appState.config.functionOnlyRoles)) return false;
+  const rUp = String(roleName).trim().toUpperCase();
+  return appState.config.functionOnlyRoles.some(x => String(x).trim().toUpperCase() === rUp);
+}
+
+function toggleRoleFunctionOnlyMode(roleName) {
+  if (!Array.isArray(appState.config.functionOnlyRoles)) appState.config.functionOnlyRoles = [];
+  const idx = appState.config.functionOnlyRoles.indexOf(roleName);
+  if (idx >= 0) appState.config.functionOnlyRoles.splice(idx, 1);
+  else appState.config.functionOnlyRoles.push(roleName);
+  renderAdminData();
+  renderCalendar();
 }
 
 function getGraduatoriaPerFunzione(roleName) {
@@ -946,6 +1049,7 @@ function renderModaleGraduatoriaContent() {
             <tr>
               <th style="width:55px">Pos. ${annoCurr}</th>
               <th>Collaboratore</th>
+              <th>Grado / Unità / Gruppo</th>
               <th>Punti Anno ${annoPrec} (Base Ranking ${annoCurr})</th>
               <th>Punti Scelti nel ${annoCurr} (Varranno per il Ranking ${annoCurr + 1})</th>
               <th>Stato Turno</th>
@@ -963,10 +1067,12 @@ function renderModaleGraduatoriaContent() {
 
           const ptPrecTxt = usaMedia ? `${Number(u.puntiAnnoPrec || 0).toFixed(2)} pt/gg` : `${Number(u.puntiAnnoPrec || 0)} pt`;
           const ptCurrTxt = `${tot.sommaPuntiAnno} pt totali (${tot.totalAllWeeks} sett. / media ${tot.mediaPuntiAnno} pt/gg)`;
+          const infoOrg = [u.grado, u.unita, u.gruppo].filter(Boolean).join(" | ") || "-";
 
           html += `<tr style="${isCurrent ? 'background:#eafaf1;font-weight:700' : ''}">
             <td><b>${idx + 1}°</b></td>
             <td>${u.cognome} ${u.nome} <small>(N° ${u.nrPersonale})</small></td>
+            <td><small>${infoOrg}</small></td>
             <td style="color:#d35400;font-weight:700">${ptPrecTxt}</td>
             <td><b>${ptCurrTxt}</b></td>
             <td>${statusBadge}</td>
@@ -1000,29 +1106,58 @@ function renderModaleGraduatoriaContent() {
   }
 }
 
+// =========================================================
+// BARRA FILTRI MULTI-SELEZIONE COMBINATI: FUNZIONE + UNITÀ + GRUPPO
+// =========================================================
 function renderMultiRoleFilterBar() {
-  const container = document.getElementById("multiRoleFilterContainer");
+  const cRole = document.getElementById("multiRoleFilterContainer");
+  const cUnita = document.getElementById("multiUnitaFilterContainer");
+  const cGruppo = document.getElementById("multiGruppoFilterContainer");
   const summary = document.getElementById("activeFilterSummary");
-  if (!container) return;
+  if (!cRole) return;
 
-  const fList = Array.isArray(appState.config.funzioni) && appState.config.funzioni.length > 0
-    ? appState.config.funzioni
-    : ["Cgr","Csq","SDSC","REV","AssD","Agente P"];
+  const fList = Array.isArray(appState.config.funzioni) && appState.config.funzioni.length > 0 ? appState.config.funzioni : ["Cgr","Csq","SDSC","REV","AssD","M","P"];
+  const uList = Array.isArray(appState.config.unita) && appState.config.unita.length > 0 ? appState.config.unita : ["Unità 1","Unità 2","Unità 3","Unità 4"];
+  const gList = Array.isArray(appState.config.gruppi) && appState.config.gruppi.length > 0 ? appState.config.gruppi : ["Gruppo 1","Gruppo 2","Gruppo 3","Gruppo 4","Gruppo 5","Gruppo 6"];
 
-  const isAll = appState.selectedFilterRoles.length === 0;
-  let html = `<span class="role-chip ${isAll ? 'active' : ''}" onclick="resetMultiRoleFilter()">Tutte</span>`;
-
+  // 1. Chip Funzioni
+  const isAllR = appState.selectedFilterRoles.length === 0;
+  let htmlR = `<span class="role-chip ${isAllR ? 'active' : ''}" onclick="resetMultiRoleFilter()">Tutte</span>`;
   fList.forEach(f => {
     const isSel = appState.selectedFilterRoles.includes(f);
-    const rankIcon = isRoleInRankingMode(f) ? "🏆" : "";
-    html += `<span class="role-chip ${isSel ? 'active' : ''}" onclick="toggleRoleInFilter('${f}')" title="Clicca per combinare ${f} nel filtro">${rankIcon}${f}</span>`;
+    const rankIcon = isRoleInRankingMode(f) ? "🏆" : (isRoleFunctionOnly(f) ? "🛡️" : "");
+    htmlR += `<span class="role-chip ${isSel ? 'active' : ''}" onclick="toggleRoleInFilter('${f}')" title="Clicca per combinare ${f} nel filtro">${rankIcon}${f}</span>`;
   });
+  htmlR += `<span class="role-chip preset-chip" onclick="setPresetRoleFilter(['Cgr','Csq','SDSC'])" title="Filtra Quadri">⚡ Quadri</span>`;
+  cRole.innerHTML = htmlR;
 
-  html += `<span class="role-chip preset-chip" onclick="setPresetRoleFilter(['Cgr','Csq','SDSC'])" title="Filtra Cgr + Csq + SDSC">⚡ Cgr+Csq+SDSC</span>`;
-  html += `<span class="role-chip preset-chip" onclick="setPresetRoleFilter(['REV','AssD'])" title="Filtra REV + AssD">⚡ REV+AssD</span>`;
+  // 2. Chip Unità
+  if (cUnita) {
+    const isAllU = appState.selectedFilterUnita.length === 0;
+    let htmlU = `<span class="role-chip ${isAllU ? 'active-unita' : ''}" onclick="resetMultiUnitaFilter()">Tutte</span>`;
+    uList.forEach(u => {
+      const isSel = appState.selectedFilterUnita.includes(u);
+      htmlU += `<span class="role-chip ${isSel ? 'active-unita' : ''}" onclick="toggleUnitaInFilter('${u}')" title="Filtra per ${u}">${u}</span>`;
+    });
+    cUnita.innerHTML = htmlU;
+  }
 
-  container.innerHTML = html;
-  summary.innerText = isAll ? "" : `[${appState.selectedFilterRoles.join(" + ")}]`;
+  // 3. Chip Gruppi
+  if (cGruppo) {
+    const isAllG = appState.selectedFilterGruppi.length === 0;
+    let htmlG = `<span class="role-chip ${isAllG ? 'active-gruppo' : ''}" onclick="resetMultiGruppoFilter()">Tutti</span>`;
+    gList.forEach(g => {
+      const isSel = appState.selectedFilterGruppi.includes(g);
+      htmlG += `<span class="role-chip ${isSel ? 'active-gruppo' : ''}" onclick="toggleGruppoInFilter('${g}')" title="Filtra per ${g}">${g}</span>`;
+    });
+    cGruppo.innerHTML = htmlG;
+  }
+
+  let activeParts = [];
+  if (appState.selectedFilterRoles.length > 0) activeParts.push(`Funz: ${appState.selectedFilterRoles.join("+")}`);
+  if (appState.selectedFilterUnita.length > 0) activeParts.push(`Unità: ${appState.selectedFilterUnita.join("+")}`);
+  if (appState.selectedFilterGruppi.length > 0) activeParts.push(`Gruppo: ${appState.selectedFilterGruppi.join("+")}`);
+  summary.innerText = activeParts.length > 0 ? `Filtro attivo: [${activeParts.join(" | ")}]` : "";
 }
 
 function toggleRoleInFilter(roleName) {
@@ -1032,12 +1167,25 @@ function toggleRoleInFilter(roleName) {
   renderMultiRoleFilterBar();
   renderCalendar();
 }
+function resetMultiRoleFilter() { appState.selectedFilterRoles = []; renderMultiRoleFilterBar(); renderCalendar(); }
 
-function resetMultiRoleFilter() {
-  appState.selectedFilterRoles = [];
+function toggleUnitaInFilter(unitaName) {
+  const idx = appState.selectedFilterUnita.indexOf(unitaName);
+  if (idx >= 0) appState.selectedFilterUnita.splice(idx, 1);
+  else appState.selectedFilterUnita.push(unitaName);
   renderMultiRoleFilterBar();
   renderCalendar();
 }
+function resetMultiUnitaFilter() { appState.selectedFilterUnita = []; renderMultiRoleFilterBar(); renderCalendar(); }
+
+function toggleGruppoInFilter(gruppoName) {
+  const idx = appState.selectedFilterGruppi.indexOf(gruppoName);
+  if (idx >= 0) appState.selectedFilterGruppi.splice(idx, 1);
+  else appState.selectedFilterGruppi.push(gruppoName);
+  renderMultiRoleFilterBar();
+  renderCalendar();
+}
+function resetMultiGruppoFilter() { appState.selectedFilterGruppi = []; renderMultiRoleFilterBar(); renderCalendar(); }
 
 function setPresetRoleFilter(rolesArr) {
   appState.selectedFilterRoles = appState.config.funzioni.filter(f => rolesArr.some(r => f.toUpperCase().includes(r.toUpperCase())));
@@ -1047,18 +1195,31 @@ function setPresetRoleFilter(rolesArr) {
 }
 
 function utentePassaFiltroMultiFunzione(user) {
-  if (!appState.selectedFilterRoles || appState.selectedFilterRoles.length === 0) return true;
-  const uFuncUp = String(user.funzione || "").toUpperCase();
-  return appState.selectedFilterRoles.some(sel => {
-    const sUp = String(sel).toUpperCase();
-    return uFuncUp === sUp || uFuncUp.includes(sUp);
-  });
+  if (appState.selectedFilterUnita.length > 0) {
+    const uUnita = String(user.unita || "").trim().toUpperCase();
+    const okU = appState.selectedFilterUnita.some(sel => String(sel).trim().toUpperCase() === uUnita);
+    if (!okU) return false;
+  }
+  if (appState.selectedFilterGruppi.length > 0) {
+    const uGruppo = String(user.gruppo || "").trim().toUpperCase();
+    const okG = appState.selectedFilterGruppi.some(sel => String(sel).trim().toUpperCase() === uGruppo);
+    if (!okG) return false;
+  }
+  if (appState.selectedFilterRoles.length > 0) {
+    const uFuncUp = String(user.funzione || "").toUpperCase();
+    const okR = appState.selectedFilterRoles.some(sel => {
+      const sUp = String(sel).toUpperCase();
+      return uFuncUp === sUp || uFuncUp.includes(sUp);
+    });
+    if (!okR) return false;
+  }
+  return true;
 }
 
 function getFunzioniPerCalcoliTotali() {
   const tutteFunz = Array.isArray(appState.config.funzioni) && appState.config.funzioni.length > 0
     ? appState.config.funzioni
-    : ["Cgr","Csq","SDSC","REV","AssD","Agente P"];
+    : ["Cgr","Csq","SDSC","REV","AssD","M","P"];
   if (appState.selectedFilterRoles && appState.selectedFilterRoles.length > 0) {
     return appState.selectedFilterRoles;
   }
@@ -1182,11 +1343,77 @@ function weekMatchesRule(w, r) {
   return false;
 }
 
-function userMatchesTargetGroup(uFunc, tGroup) {
-  const targets = String(tGroup || "TUTTI").toUpperCase().split('+').map(s => s.trim()).filter(Boolean);
-  if (targets.includes("TUTTI")) return true;
-  const uUp = String(uFunc || "").toUpperCase();
-  return targets.some(t => uUp.includes(t));
+// =========================================================
+// MOTORE INTELLIGENTE DI MATCHING REGOLE (FUNZIONE + UNITÀ + GRUPPO)
+// Gestisce:
+// 1) Blindatura Funzioni Trasversali (es. Csq, REV, SDSC ignorano regole di Unità/Gruppo)
+// 2) Modalità "OGNI_UNITA" e "OGNI_GRUPPO" (confronta dinamicamente i colleghi della stessa Unità/Gruppo)
+// =========================================================
+function userMatchesRuleTarget(userObj, ruleObj, referenceUser = null) {
+  const rawU = String(ruleObj.targetUnita || "TUTTE").trim().toUpperCase();
+  const rawG = String(ruleObj.targetGruppo || "TUTTI").trim().toUpperCase();
+  const hasUnitaConstraint = (rawU !== "" && rawU !== "TUTTE" && rawU !== "TUTTI");
+  const hasGruppoConstraint = (rawG !== "" && rawG !== "TUTTI" && rawG !== "TUTTE");
+
+  // 0. BLINDATURA FUNZIONI TRASVERSALI:
+  // Se la funzione del collaboratore è in "functionOnlyRoles" (es. Cgr, Csq, SDSC, REV, AssD),
+  // ignora automaticamente qualsiasi regola che abbia un vincolo di Unità o di Gruppo!
+  if ((hasUnitaConstraint || hasGruppoConstraint) && isRoleFunctionOnly(userObj.funzione)) {
+    return false;
+  }
+
+  // 1. Verifica Funzione
+  const tFunc = String(ruleObj.targetGroup || "TUTTI").toUpperCase().split('+').map(s => s.trim()).filter(Boolean);
+  if (!tFunc.includes("TUTTI")) {
+    const uFuncUp = String(userObj.funzione || "").trim().toUpperCase();
+    const matchF = tFunc.some(t => uFuncUp === t || uFuncUp.includes(t));
+    if (!matchF) return false;
+  }
+
+  // 2. Verifica Unità (specifica oppure dinamica "OGNI_UNITA")
+  if (hasUnitaConstraint) {
+    const uUnitaUp = String(userObj.unita || "").trim().toUpperCase();
+    if (!uUnitaUp) return false;
+    if (rawU === "OGNI_UNITA") {
+      if (referenceUser) {
+        const refU = String(referenceUser.unita || "").trim().toUpperCase();
+        if (!refU || uUnitaUp !== refU) return false;
+      }
+    } else {
+      const tUnita = rawU.split('+').map(s => s.trim()).filter(Boolean);
+      if (!tUnita.some(t => uUnitaUp === t)) return false;
+    }
+  }
+
+  // 3. Verifica Gruppo (specifico oppure dinamico "OGNI_GRUPPO")
+  if (hasGruppoConstraint) {
+    const uGruppoUp = String(userObj.gruppo || "").trim().toUpperCase();
+    if (!uGruppoUp) return false;
+    if (rawG === "OGNI_GRUPPO") {
+      if (referenceUser) {
+        const refG = String(referenceUser.gruppo || "").trim().toUpperCase();
+        if (!refG || uGruppoUp !== refG) return false;
+      }
+    } else {
+      const tGruppo = rawG.split('+').map(s => s.trim()).filter(Boolean);
+      if (!tGruppo.some(t => uGruppoUp === t)) return false;
+    }
+  }
+
+  return true;
+}
+
+function formatRuleTargetBadge(ruleObj, sampleUser = null) {
+  let parts = [ruleObj.targetGroup || "TUTTI"];
+  const rawU = String(ruleObj.targetUnita || "TUTTE").trim();
+  const rawG = String(ruleObj.targetGruppo || "TUTTI").trim();
+  if (rawU && rawU !== "TUTTE") {
+    parts.push(rawU === "OGNI_UNITA" ? (sampleUser && sampleUser.unita ? sampleUser.unita : "🔄 Ogni Singola Unità") : rawU);
+  }
+  if (rawG && rawG !== "TUTTI") {
+    parts.push(rawG === "OGNI_GRUPPO" ? (sampleUser && sampleUser.gruppo ? sampleUser.gruppo : "🔄 Ogni Singolo Gruppo") : rawG);
+  }
+  return parts.join(" • ");
 }
 
 function getWeekFormatInfo(w) {
@@ -1268,6 +1495,16 @@ function formatQuotaCell(used, maxAllowed) {
   return {text:`${used}/${allowed}`, cls:"quota-partial"};
 }
 
+function buildUserTooltipComment(user) {
+  let lines = [`Collaboratore: ${user.cognome} ${user.nome} (N° ${user.nrPersonale})`];
+  if (user.grado) lines.push(`Grado: ${user.grado}`);
+  if (user.funzione) lines.push(`Funzione: ${user.funzione}`);
+  if (user.unita) lines.push(`Unità: ${user.unita}`);
+  if (user.gruppo) lines.push(`Gruppo: ${user.gruppo}`);
+  lines.push(`Punti Anno ${appState.config.anno - 1}: ${user.puntiAnnoPrec || 0}`);
+  return lines.join(" | ");
+}
+
 function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
   if (appState.isAdmin) return null;
 
@@ -1298,7 +1535,7 @@ function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
   for (let rule of appState.config.unifiedRules) {
     if (rule.kind !== 'absence') continue;
     if (rule.tornata !== 'TUTTE' && String(rule.tornata) !== numTornata) continue;
-    if (!weekMatchesRule(weekObj, rule) || !userMatchesTargetGroup(user.funzione, rule.targetGroup)) continue;
+    if (!weekMatchesRule(weekObj, rule) || !userMatchesRuleTarget(user, rule, user)) continue;
 
     if (rule.maxTotalInPeriod !== undefined && rule.maxTotalInPeriod !== "" && Number(rule.maxTotalInPeriod) > 0) {
       let giaInseriteNelPeriodo = [];
@@ -1326,19 +1563,20 @@ function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
     }
 
     if (inRankingMode) {
+      const targetDesc = formatRuleTargetBadge(rule, user);
       if (Array.isArray(rule.allowedTypes) && rule.allowedTypes.length > 0 && !rule.allowedTypes.includes(tipoScelto)) {
-        return `Blocco Rigido Modalità Ranking (${rule.label || rule.targetGroup}): in questo periodo sono consentite solo assenze di tipo [${rule.allowedTypes.join(', ')}]!`;
+        return `Blocco Rigido Modalità Ranking (${rule.label || targetDesc}): in questo periodo sono consentite solo assenze di tipo [${rule.allowedTypes.join(', ')}]!`;
       }
       if (rule.maxConcurrent !== undefined && rule.maxConcurrent !== "") {
         let assentiNelGruppo = 0;
         appState.utenti.forEach(u => {
           if (String(u.nrPersonale) === String(user.nrPersonale)) return;
-          if (userMatchesTargetGroup(u.funzione, rule.targetGroup) && getUserWeekRecord(u.nrPersonale, weekObj)) {
+          if (userMatchesRuleTarget(u, rule, user) && getUserWeekRecord(u.nrPersonale, weekObj)) {
             assentiNelGruppo++;
           }
         });
         if (assentiNelGruppo >= Number(rule.maxConcurrent)) {
-          return `Blocco Rigido Modalità Ranking: nella Settimana ${weekObj.weekNum} è già stato raggiunto il limite massimo di ${rule.maxConcurrent} assenze contemporanee per [${rule.targetGroup}]! Scegli un'altra settimana disponibile.`;
+          return `Blocco Rigido Modalità Ranking: nella Settimana ${weekObj.weekNum} è già stato raggiunto il limite massimo di ${rule.maxConcurrent} assenze contemporanee per [${targetDesc}]! Scegli un'altra settimana disponibile.`;
         }
       }
     }
@@ -1346,6 +1584,7 @@ function verificaBloccoPlausibilitaEConsecutive(user, weekObj, tipoScelto) {
   return null;
 }
 
+// Analizza problematiche supportando anche le regole dinamiche "OGNI_UNITA" e "OGNI_GRUPPO"
 function analizzaProblematicheCalendario() {
   const tAtt = getTornataAttiva(), numTornata = tAtt ? String(tAtt.id) : "1";
   let problematiche = [], cellWarnings = {}, weekConflicts = new Set();
@@ -1356,28 +1595,42 @@ function analizzaProblematicheCalendario() {
       if (rule.tornata !== 'TUTTE' && String(rule.tornata) !== numTornata) return;
       if (!weekMatchesRule(w, rule)) return;
 
-      const assentiGruppo = [];
+      // Raggruppa gli assenti per "bucket" (se la regola usa OGNI_UNITA o OGNI_GRUPPO, crea un sottogruppo separato per ogni Unità/Gruppo!)
+      let buckets = {};
       appState.utenti.forEach(u => {
-        if (!userMatchesTargetGroup(u.funzione, rule.targetGroup)) return;
+        if (!userMatchesRuleTarget(u, rule, null)) return;
         const rec = getUserWeekRecord(u.nrPersonale, w);
-        if (rec) {
-          assentiGruppo.push({user:u, rec:rec});
-          if (rec.tipo !== 'K' && rec.tipo !== 'CORSO' && rec.tipo !== 'MIL' && Array.isArray(rule.allowedTypes) && rule.allowedTypes.length > 0 && !rule.allowedTypes.includes(rec.tipo)) {
-            const msg = `Tipo assenza '${rec.tipo}' non previsto nella ${tAtt ? tAtt.nome : 'Tornata '+numTornata} dalla regola "${rule.label || rule.targetGroup}" (consentiti: ${rule.allowedTypes.join(',')})`;
-            const cKey = `${u.nrPersonale}_${w.key}`;
-            if (!cellWarnings[cKey]) cellWarnings[cKey] = [];
-            cellWarnings[cKey].push(msg); weekConflicts.add(w.key);
-            problematiche.push({weekNum:w.weekNum,rangeLabel:w.rangeLabel,weekKey:w.key,tipoProblema:"Genere Assenza Non Consentito",gruppo:rule.targetGroup,dettaglio:msg,utentiCoinvolti:[u]});
-          }
+        if (!rec) return;
+
+        const uKey = String(rule.targetUnita).toUpperCase() === "OGNI_UNITA" ? (u.unita || "Senza Unità") : "ALL_U";
+        const gKey = String(rule.targetGruppo).toUpperCase() === "OGNI_GRUPPO" ? (u.gruppo || "Senza Gruppo") : "ALL_G";
+        const bKey = `${uKey}__${gKey}`;
+
+        if (!buckets[bKey]) buckets[bKey] = [];
+        buckets[bKey].push({user:u, rec:rec});
+
+        const targetDesc = formatRuleTargetBadge(rule, u);
+        if (rec.tipo !== 'K' && rec.tipo !== 'CORSO' && rec.tipo !== 'MIL' && Array.isArray(rule.allowedTypes) && rule.allowedTypes.length > 0 && !rule.allowedTypes.includes(rec.tipo)) {
+          const msg = `Tipo assenza '${rec.tipo}' non previsto nella ${tAtt ? tAtt.nome : 'Tornata '+numTornata} dalla regola "${rule.label || targetDesc}" (consentiti: ${rule.allowedTypes.join(',')})`;
+          const cKey = `${u.nrPersonale}_${w.key}`;
+          if (!cellWarnings[cKey]) cellWarnings[cKey] = [];
+          cellWarnings[cKey].push(msg); weekConflicts.add(w.key);
+          problematiche.push({weekNum:w.weekNum,rangeLabel:w.rangeLabel,weekKey:w.key,tipoProblema:"Genere Assenza Non Consentito",gruppo:targetDesc,dettaglio:msg,utentiCoinvolti:[u]});
         }
       });
 
-      if (rule.maxConcurrent !== undefined && rule.maxConcurrent !== "" && assentiGruppo.length > Number(rule.maxConcurrent)) {
-        const nomi = assentiGruppo.map(x => `${x.user.cognome} ${x.user.nome} (${x.user.funzione})`).join(", ");
-        const msgC = `Superato limite assenze contemporanee per [${rule.targetGroup}]: ${assentiGruppo.length} assenti su max ${rule.maxConcurrent} (${nomi})`;
-        weekConflicts.add(w.key);
-        assentiGruppo.forEach(x => { const cKey = `${x.user.nrPersonale}_${w.key}`; if (!cellWarnings[cKey]) cellWarnings[cKey] = []; cellWarnings[cKey].push(msgC); });
-        problematiche.push({weekNum:w.weekNum,rangeLabel:w.rangeLabel,weekKey:w.key,tipoProblema:`Eccesso Assenze Contemporanee (${assentiGruppo.length}/${rule.maxConcurrent})`,gruppo:rule.targetGroup,dettaglio:rule.label || `Max ${rule.maxConcurrent} assenti`,utentiCoinvolti:assentiGruppo.map(x => x.user)});
+      if (rule.maxConcurrent !== undefined && rule.maxConcurrent !== "") {
+        Object.values(buckets).forEach(assentiGruppo => {
+          if (assentiGruppo.length > Number(rule.maxConcurrent)) {
+            const sampleU = assentiGruppo[0].user;
+            const targetDesc = formatRuleTargetBadge(rule, sampleU);
+            const nomi = assentiGruppo.map(x => `${x.user.cognome} ${x.user.nome} (${x.user.funzione})`).join(", ");
+            const msgC = `Superato limite assenze contemporanee per [${targetDesc}]: ${assentiGruppo.length} assenti su max ${rule.maxConcurrent} (${nomi})`;
+            weekConflicts.add(w.key);
+            assentiGruppo.forEach(x => { const cKey = `${x.user.nrPersonale}_${w.key}`; if (!cellWarnings[cKey]) cellWarnings[cKey] = []; cellWarnings[cKey].push(msgC); });
+            problematiche.push({weekNum:w.weekNum,rangeLabel:w.rangeLabel,weekKey:w.key,tipoProblema:`Eccesso Assenze Contemporanee (${assentiGruppo.length}/${rule.maxConcurrent})`,gruppo:targetDesc,dettaglio:rule.label || `Max ${rule.maxConcurrent} assenti`,utentiCoinvolti:assentiGruppo.map(x => x.user)});
+          }
+        });
       }
     });
   });
@@ -1428,7 +1681,7 @@ function renderAnnualWeeklyView() {
 
   let trR = `<tr class="row-ranges">
     <th rowspan="3" class="sticky-c1 collapsible-col">N°</th>
-    <th rowspan="3" class="sticky-c2" style="text-align:center!important">Grado<br>Cognome<br>Nome</th>
+    <th rowspan="3" class="sticky-c2" style="text-align:center!important" title="Passa il mouse sul nome di un collaboratore per vedere Grado, Funzione, Unità e Gruppo">Grado<br>Cognome<br>Nome</th>
     <th class="sticky-c3 collapsible-col">V - Vac.</th>
     <th class="sticky-c4 collapsible-col">F - FLAZ</th>
     <th class="sticky-c5 collapsible-col">P -<br>pr.fed.</th>
@@ -1484,10 +1737,12 @@ function renderAnnualWeeklyView() {
     const tot = calcolaTotaliUtente(user.nrPersonale), perc = user.percentuale || 100;
     const qV = formatQuotaCell(tot.vCount, user.dirittoV ?? 5), qF = formatQuotaCell(tot.fCount, user.dirittoF ?? 0), qP = formatQuotaCell(tot.pCount, user.dirittoPF ?? 0);
     const turnBadge = isUserOnTurn ? `<span title="È il suo turno in graduatoria Ranking!" style="margin-left:3px">🟢</span>` : "";
+    const commentTooltip = buildUserTooltipComment(user);
+    const gradoPrefix = user.grado ? `<span style="color:#555;font-size:.7rem">${user.grado}</span> ` : "";
 
     tr.innerHTML = `
       <td class="sticky-c1 collapsible-col" title="Nr. Personale: ${user.nrPersonale}">${String(user.nrPersonale || (idx+1))}</td>
-      <td class="sticky-c2" title="${user.funzione} - ${user.cognome} ${user.nome} | Punti Anno ${appState.config.anno - 1}: ${user.puntiAnnoPrec||0}">${user.cognome} ${user.nome} <span style="font-size:.66rem;color:#555">(${user.funzione})</span>${turnBadge}</td>
+      <td class="sticky-c2 has-comment" title="${commentTooltip}">${gradoPrefix}${user.cognome} ${user.nome} <span style="font-size:.66rem;color:#2980b9">(${user.funzione})</span>${turnBadge}</td>
       <td class="sticky-c3 collapsible-col ${qV.cls}">${qV.text}</td>
       <td class="sticky-c4 collapsible-col ${qF.cls}">${qF.text}</td>
       <td class="sticky-c5 collapsible-col ${qP.cls}">${qP.text}</td>
@@ -1534,7 +1789,7 @@ function renderAnnualWeeklyView() {
   const summaryColSpan = appState.hideExtraCols ? 1 : 6;
 
   let trSp = `<tr class="spacer-row"><td class="sticky-c1 collapsible-col"></td><td colspan="${summaryColSpan + weeks.length}"></td></tr>`;
-  let trComp = `<tr class="row-tot-complessive"><td class="summary-left-idx collapsible-col"></td><td colspan="${summaryColSpan}" class="summary-label">Assenze complessive ${appState.selectedFilterRoles.length>0 ? '('+appState.selectedFilterRoles.join('+')+')' : ''}</td>`;
+  let trComp = `<tr class="row-tot-complessive"><td class="summary-left-idx collapsible-col"></td><td colspan="${summaryColSpan}" class="summary-label">Assenze complessive ( Utenti visualizzati )</td>`;
 
   let righeFunzioniMap = {};
   funzioniAttive.forEach(fName => {
@@ -1550,11 +1805,8 @@ function renderAnnualWeeklyView() {
     funzioniAttive.forEach(fName => sumPerFunzione[fName] = 0);
 
     utentiFiltrati.forEach(u => {
-      if (getUserWeekRecord(u.nrPersonale, w)) countHead++;
-    });
-
-    appState.utenti.forEach(u => {
       if (getUserWeekRecord(u.nrPersonale, w)) {
+        countHead++;
         const quota = (Number(u.percentuale) || 100) / 100;
         const uRoleUp = String(u.funzione || "").trim().toUpperCase();
         funzioniAttive.forEach(fName => {
@@ -1660,9 +1912,12 @@ function renderDailyView() {
     if (isMyRow) tr.classList.add("my-row");
     const tot = calcolaTotaliUtente(user.nrPersonale);
     const qV = formatQuotaCell(tot.vCount, user.dirittoV ?? 5), qF = formatQuotaCell(tot.fCount, user.dirittoF ?? 0), qP = formatQuotaCell(tot.pCount, user.dirittoPF ?? 0);
+    const commentTooltip = buildUserTooltipComment(user);
+    const gradoPrefix = user.grado ? `<span style="color:#555;font-size:.7rem">${user.grado}</span> ` : "";
+
     tr.innerHTML = `
       <td class="sticky-c1 collapsible-col">${String(user.nrPersonale||(idx+1))}</td>
-      <td class="sticky-c2">${user.cognome} ${user.nome} <span style="font-size:.66rem;color:#555">(${user.funzione})</span></td>
+      <td class="sticky-c2 has-comment" title="${commentTooltip}">${gradoPrefix}${user.cognome} ${user.nome} <span style="font-size:.66rem;color:#2980b9">(${user.funzione})</span></td>
       <td class="sticky-c3 collapsible-col ${qV.cls}">${qV.text}</td>
       <td class="sticky-c4 collapsible-col ${qF.cls}">${qF.text}</td>
       <td class="sticky-c5 collapsible-col ${qP.cls}">${qP.text}</td>
@@ -1732,7 +1987,7 @@ function renderTabelleReportProblematiche() {
   const bA = document.getElementById("activeProblemsContainer");
   if (appState.problematicheAttive.length === 0) bA.innerHTML = `<div style="background:#d4efdf;color:#1e8449;padding:10px;border-radius:6px;font-weight:700">✅ Nessuna problematica o sovrapposizione attiva rilevata sul calendario!</div>`;
   else {
-    let h = `<table class="report-table"><thead><tr><th>Settimana</th><th>Gruppo</th><th>Tipo Problematica</th><th>Collaboratori Coinvolti</th><th>Azione Rapida</th></tr></thead><tbody>`;
+    let h = `<table class="report-table"><thead><tr><th>Settimana</th><th>Target (Funz / Unità / Gruppo)</th><th>Tipo Problematica</th><th>Collaboratori Coinvolti</th><th>Azione Rapida</th></tr></thead><tbody>`;
     appState.problematicheAttive.forEach(p => {
       const uL = p.utentiCoinvolti.map(u => `<b>${u.cognome} ${u.nome}</b> (${u.funzione})`).join(", ");
       const nr1 = p.utentiCoinvolti[0] ? p.utentiCoinvolti[0].nrPersonale : "", nr2 = p.utentiCoinvolti[1] ? p.utentiCoinvolti[1].nrPersonale : nr1;
@@ -1778,15 +2033,38 @@ async function eliminaDivergenza(idRec) {
 }
 
 function popolaTutteDropdownFunzioni() {
-  const fL = Array.isArray(appState.config.funzioni) && appState.config.funzioni.length > 0 ? appState.config.funzioni : ["Cgr","Csq","SDSC","REV","AssD","Agente P"];
-  const h = fL.map(f => `<option value="${f}">${f}</option>`).join('');
-  document.getElementById("regFunzione").innerHTML = h;
-  document.getElementById("addUserRole").innerHTML = h;
+  const fL = Array.isArray(appState.config.funzioni) && appState.config.funzioni.length > 0 ? appState.config.funzioni : ["Cgr","Csq","SDSC","REV","AssD","M","P"];
+  const gL = Array.isArray(appState.config.gradi) && appState.config.gradi.length > 0 ? appState.config.gradi : ["Sgtm","Aiut","Cpl","App","AssD","Spec"];
+  const uL = Array.isArray(appState.config.unita) && appState.config.unita.length > 0 ? appState.config.unita : ["Unità 1","Unità 2","Unità 3","Unità 4"];
+  const grL = Array.isArray(appState.config.gruppi) && appState.config.gruppi.length > 0 ? appState.config.gruppi : ["Gruppo 1","Gruppo 2","Gruppo 3","Gruppo 4","Gruppo 5","Gruppo 6"];
+
+  const hF = fL.map(f => `<option value="${f}">${f}</option>`).join('');
+  const hG = `<option value="">- Grado -</option>` + gL.map(g => `<option value="${g}">${g}</option>`).join('');
+  const hU = `<option value="">- Unità -</option>` + uL.map(u => `<option value="${u}">${u}</option>`).join('');
+  const hGr = `<option value="">- Gruppo -</option>` + grL.map(gr => `<option value="${gr}">${gr}</option>`).join('');
+
+  document.getElementById("regFunzione").innerHTML = hF;
+  document.getElementById("addUserRole").innerHTML = hF;
+  document.getElementById("regGrado").innerHTML = hG;
+  document.getElementById("addUserGrado").innerHTML = hG;
+  document.getElementById("regUnita").innerHTML = hU;
+  document.getElementById("addUserUnita").innerHTML = hU;
+  document.getElementById("regGruppo").innerHTML = hGr;
+  document.getElementById("addUserGruppo").innerHTML = hGr;
 
   const selTarget = document.getElementById("absTargetGroup");
-  if (selTarget) {
-    selTarget.innerHTML = `<option value="TUTTI" selected>-- TUTTI --</option>` + h;
+  if (selTarget) selTarget.innerHTML = `<option value="TUTTI" selected>-- TUTTE LE FUNZIONI --</option>` + hF;
+
+  const selTargetU = document.getElementById("absTargetUnita");
+  if (selTargetU) {
+    selTargetU.innerHTML = `<option value="TUTTE" selected>-- TUTTE LE UNITÀ --</option><option value="OGNI_UNITA" style="color:#16a085">🔄 OGNI SINGOLA UNITÀ (Separatamente)</option>` + uL.map(u => `<option value="${u}">${u}</option>`).join('');
   }
+
+  const selTargetG = document.getElementById("absTargetGruppo");
+  if (selTargetG) {
+    selTargetG.innerHTML = `<option value="TUTTI" selected>-- TUTTI I GRUPPI --</option><option value="OGNI_GRUPPO" style="color:#8e44ad">🔄 OGNI SINGOLO GRUPPO (Separatamente)</option>` + grL.map(gr => `<option value="${gr}">${gr}</option>`).join('');
+  }
+
   renderMultiRoleFilterBar();
 }
 
@@ -1798,7 +2076,22 @@ function mostraRegistrazione(isReg) {
 }
 
 async function eseguiRegistrazione() {
-  const p = {azione:"registra",nrPersonale:document.getElementById("regNrPers").value.trim(),percentuale:parseInt(document.getElementById("regPerc").value)||100,nome:document.getElementById("regNome").value.trim(),cognome:document.getElementById("regCognome").value.trim(),funzione:document.getElementById("regFunzione").value,dirittoV:parseInt(document.getElementById("regDirV").value)||0,dirittoF:parseInt(document.getElementById("regDirF").value)||0,dirittoPF:parseInt(document.getElementById("regDirPF").value)||0,puntiAnnoPrec:0,password:document.getElementById("regPass").value};
+  const p = {
+    azione:"registra",
+    nrPersonale:document.getElementById("regNrPers").value.trim(),
+    percentuale:parseInt(document.getElementById("regPerc").value)||100,
+    nome:document.getElementById("regNome").value.trim(),
+    cognome:document.getElementById("regCognome").value.trim(),
+    grado:document.getElementById("regGrado").value,
+    funzione:document.getElementById("regFunzione").value,
+    unita:document.getElementById("regUnita").value,
+    gruppo:document.getElementById("regGruppo").value,
+    dirittoV:parseInt(document.getElementById("regDirV").value)||0,
+    dirittoF:parseInt(document.getElementById("regDirF").value)||0,
+    dirittoPF:parseInt(document.getElementById("regDirPF").value)||0,
+    puntiAnnoPrec:0,
+    password:document.getElementById("regPass").value
+  };
   if (!p.nrPersonale || !p.nome || !p.cognome || !p.password) { document.getElementById("authMsg").innerText = "Compila tutti i campi obbligatori (*)!"; return; }
   const btn = document.getElementById("btnRegSubmit"); btn.disabled = true; btn.innerText = "Registrazione...";
   try {
@@ -1840,7 +2133,8 @@ function aggiornaBadgeUtente() {
   if (!appState.utenteLoggato) return;
   const u = appState.utenteLoggato;
   const tagAdm = appState.isAdmin ? " 🛠️ [ADMIN]" : ` | Diritto: ${u.dirittoV??5}V, ${u.dirittoF??0}F, ${u.dirittoPF??0}PF`;
-  document.getElementById("userBadge").innerText = `👤 ${u.cognome} ${u.nome} (N° ${u.nrPersonale} | ${u.funzione}${tagAdm})`;
+  const orgStr = [u.grado, u.funzione, u.unita, u.gruppo].filter(Boolean).join(" • ");
+  document.getElementById("userBadge").innerText = `👤 ${u.cognome} ${u.nome} (N° ${u.nrPersonale} | ${orgStr}${tagAdm})`;
   document.getElementById("navYear").innerText = appState.config.anno;
 }
 
@@ -1963,10 +2257,40 @@ function renderAdminData() {
   validaDateTornate();
 
   document.getElementById("adminYear").value = appState.config.anno; document.getElementById("maxWeeks").value = appState.config.maxWeeks;
-  document.getElementById("rolesTagContainer").innerHTML = appState.config.funzioni.map(f => `<span class="badge" style="background:#2c3e50;color:#fff;display:flex;align-items:center;gap:6px">${f} <span style="cursor:pointer;color:#ff7675" onclick="removeRoleOption('${f}')">✖</span></span>`).join('');
+
+  document.getElementById("rolesTagContainer").innerHTML = appState.config.funzioni.map(f => `<span class="badge" style="background:#2c3e50;color:#fff;display:flex;align-items:center;gap:5px">${f} <span style="cursor:pointer;color:#ff7675" onclick="removeBaseItem('funzioni','${f}')">✖</span></span>`).join('');
+  document.getElementById("gradiTagContainer").innerHTML = appState.config.gradi.map(g => `<span class="badge" style="background:#34495e;color:#fff;display:flex;align-items:center;gap:5px">${g} <span style="cursor:pointer;color:#ff7675" onclick="removeBaseItem('gradi','${g}')">✖</span></span>`).join('');
+  document.getElementById("unitaTagContainer").innerHTML = appState.config.unita.map(u => `<span class="badge" style="background:#16a085;color:#fff;display:flex;align-items:center;gap:5px">${u} <span style="cursor:pointer;color:#ff7675" onclick="removeBaseItem('unita','${u}')">✖</span></span>`).join('');
+  document.getElementById("gruppiTagContainer").innerHTML = appState.config.gruppi.map(gr => `<span class="badge" style="background:#8e44ad;color:#fff;display:flex;align-items:center;gap:5px">${gr} <span style="cursor:pointer;color:#ff7675" onclick="removeBaseItem('gruppi','${gr}')">✖</span></span>`).join('');
+
   document.getElementById('adminClosureList').innerHTML = appState.config.closures.map(c => `<li><span><b>${c.date}</b> - ${c.name}</span> <button type="button" class="btn-delete" onclick="deleteConfigItem('closures',${c.id})">X</button></li>`).join('');
   
-  document.getElementById('adminUserList').innerHTML = appState.utenti.map(u => `<li><div style="flex:1;min-width:170px"><b>N° ${u.nrPersonale} - ${u.cognome} ${u.nome}</b> <span class="badge" style="background:#3498db;color:#fff;margin-left:4px">${u.funzione}</span></div><div style="display:flex;align-items:center;gap:5px;font-size:.76rem;flex-wrap:wrap"><label>V:<input type="number" class="mini-quota-input" id="qv_${u.nrPersonale}" value="${u.dirittoV??5}" min="0" max="8" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label><label>F:<input type="number" class="mini-quota-input" id="qf_${u.nrPersonale}" value="${u.dirittoF??0}" min="0" max="5" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label><label>PF:<input type="number" class="mini-quota-input" id="qpf_${u.nrPersonale}" value="${u.dirittoPF??0}" min="0" max="4" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label><label>%:<input type="number" class="mini-quota-input" id="qperc_${u.nrPersonale}" value="${u.percentuale??100}" min="10" max="100" step="5" style="width:48px!important" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label><label title="Punti Anno ${annoPrec} (letti/salvati nel foglio Storico_Punteggi_Ranking sotto l'anno ${annoPrec})" style="color:#d35400;font-weight:700">Pt.${annoPrec}:<input type="number" class="mini-quota-input" id="qpt_${u.nrPersonale}" value="${u.puntiAnnoPrec??0}" step="1" style="width:56px!important;border-color:#f39c12" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label><button type="button" class="btn-delete" onclick="deleteCollaborator('${u.nrPersonale}')">X</button></div></li>`).join('');
+  document.getElementById('adminUserList').innerHTML = appState.utenti.map(u => {
+    const optsGrado = `<option value="">-Grado-</option>` + appState.config.gradi.map(g => `<option value="${g}" ${u.grado===g?'selected':''}>${g}</option>`).join('');
+    const optsFunc = appState.config.funzioni.map(f => `<option value="${f}" ${u.funzione===f?'selected':''}>${f}</option>`).join('');
+    const optsUnita = `<option value="">-Unità-</option>` + appState.config.unita.map(un => `<option value="${un}" ${u.unita===un?'selected':''}>${un}</option>`).join('');
+    const optsGruppo = `<option value="">-Gruppo-</option>` + appState.config.gruppi.map(gr => `<option value="${gr}" ${u.gruppo===gr?'selected':''}>${gr}</option>`).join('');
+
+    return `<li>
+      <div style="flex:1;min-width:165px">
+        <b>N° ${u.nrPersonale} - ${u.cognome} ${u.nome}</b>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap">
+          <select class="mini-select-input" id="qgrado_${u.nrPersonale}" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')" title="Grado">${optsGrado}</select>
+          <select class="mini-select-input" id="qfunc_${u.nrPersonale}" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')" title="Funzione" style="background:#ebf5fb;border-color:#3498db">${optsFunc}</select>
+          <select class="mini-select-input" id="qunita_${u.nrPersonale}" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')" title="Unità">${optsUnita}</select>
+          <select class="mini-select-input" id="qgruppo_${u.nrPersonale}" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')" title="Gruppo">${optsGruppo}</select>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;font-size:.75rem;flex-wrap:wrap">
+        <label>V:<input type="number" class="mini-quota-input" id="qv_${u.nrPersonale}" value="${u.dirittoV??5}" min="0" max="8" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label>
+        <label>F:<input type="number" class="mini-quota-input" id="qf_${u.nrPersonale}" value="${u.dirittoF??0}" min="0" max="5" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label>
+        <label>PF:<input type="number" class="mini-quota-input" id="qpf_${u.nrPersonale}" value="${u.dirittoPF??0}" min="0" max="4" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label>
+        <label>%:<input type="number" class="mini-quota-input" id="qperc_${u.nrPersonale}" value="${u.percentuale??100}" min="10" max="100" step="5" style="width:46px!important" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label>
+        <label title="Punti Anno ${annoPrec}" style="color:#d35400;font-weight:700">Pt.${annoPrec}:<input type="number" class="mini-quota-input" id="qpt_${u.nrPersonale}" value="${u.puntiAnnoPrec??0}" step="1" style="width:52px!important;border-color:#f39c12" onchange="aggiornaDirittiCollaboratore('${u.nrPersonale}')"></label>
+        <button type="button" class="btn-delete" onclick="deleteCollaborator('${u.nrPersonale}')">X</button>
+      </div>
+    </li>`;
+  }).join('');
 
   document.getElementById('adminUnifiedRulesList').innerHTML = appState.config.unifiedRules.map(r => {
     const pTxt = r.periodType === 'weeks' ? `Sett: <b>${r.weeks}</b>` : `Dal <b>${r.start}</b> al <b>${r.end}</b>`;
@@ -1978,10 +2302,21 @@ function renderAdminData() {
     if (r.maxTotalInPeriod !== undefined && r.maxTotalInPeriod !== "") vincoliAttivi.push(`<span style="color:#c0392b">Max Tot. Periodo (🛑): <b>${r.maxTotalInPeriod} sett.</b></span>`);
     const tipi = Array.isArray(r.allowedTypes) ? r.allowedTypes.join(',') : 'V,F,P';
     vincoliAttivi.push(`Tipi: <b>[${tipi}]</b>`);
+    const targetBadge = formatRuleTargetBadge(r);
 
-    return `<li><span>🛑 <b>[Assenza - Tornata: ${r.tornata}]</b> ${pTxt} | Gruppo: <b>${r.targetGroup}</b> | ${vincoliAttivi.join(" | ")} ${r.label?`— <i>${r.label}</i>`:''}</span><button type="button" class="btn-delete" onclick="deleteConfigItem('unifiedRules',${r.id})">X</button></li>`;
+    return `<li><span>🛑 <b>[Assenza - Tornata: ${r.tornata}]</b> ${pTxt} | Target: <b style="color:#2980b9">[${targetBadge}]</b> | ${vincoliAttivi.join(" | ")} ${r.label?`— <i>${r.label}</i>`:''}</span><button type="button" class="btn-delete" onclick="deleteConfigItem('unifiedRules',${r.id})">X</button></li>`;
   }).join('');
 
+  // Riquadro 4 A): Chip Blindatura Funzioni Trasversali (Solo Funzione)
+  const funcOnlyBox = document.getElementById("functionOnlyRolesContainer");
+  if (funcOnlyBox) {
+    funcOnlyBox.innerHTML = appState.config.funzioni.map(f => {
+      const isFOnly = isRoleFunctionOnly(f);
+      return `<span class="role-chip ${isFOnly ? 'active' : ''}" onclick="toggleRoleFunctionOnlyMode('${f}')" title="Clicca per cambiare ambito">${isFOnly ? '🛡️ ' + f + ' (Solo Funzione)' : '🏢 ' + f + ' (Segue anche Unità/Gruppo)'}</span>`;
+    }).join('');
+  }
+
+  // Riquadro 4 B): Chip Modalità Ranking
   const rankRolesBox = document.getElementById("rankingRolesContainer");
   if (rankRolesBox) {
     rankRolesBox.innerHTML = appState.config.funzioni.map(f => {
@@ -2004,12 +2339,19 @@ function renderAdminData() {
 async function aggiornaDirittiCollaboratore(nrP) {
   const u = appState.utenti.find(x => String(x.nrPersonale) === String(nrP)); if (!u) return;
   const annoPrec = (Number(appState.config.anno) || 2027) - 1;
-  u.dirittoV = parseInt(document.getElementById(`qv_${nrP}`).value)||0; u.dirittoF = parseInt(document.getElementById(`qf_${nrP}`).value)||0;
-  u.dirittoPF = parseInt(document.getElementById(`qpf_${nrP}`).value)||0; u.percentuale = parseInt(document.getElementById(`qperc_${nrP}`).value)||100;
+  u.grado = document.getElementById(`qgrado_${nrP}`).value;
+  u.funzione = document.getElementById(`qfunc_${nrP}`).value;
+  u.unita = document.getElementById(`qunita_${nrP}`).value;
+  u.gruppo = document.getElementById(`qgruppo_${nrP}`).value;
+  u.dirittoV = parseInt(document.getElementById(`qv_${nrP}`).value)||0;
+  u.dirittoF = parseInt(document.getElementById(`qf_${nrP}`).value)||0;
+  u.dirittoPF = parseInt(document.getElementById(`qpf_${nrP}`).value)||0;
+  u.percentuale = parseInt(document.getElementById(`qperc_${nrP}`).value)||100;
   u.puntiAnnoPrec = parseFloat(document.getElementById(`qpt_${nrP}`).value)||0;
 
   let recSt = appState.storicoRanking.find(r => Number(r.anno) === annoPrec && String(r.nrPersonale) === String(nrP));
   if (recSt) {
+    recSt.funzione = u.funzione;
     recSt.puntiTotali = u.puntiAnnoPrec;
     recSt.mediaPunti = u.puntiAnnoPrec;
   } else {
@@ -2023,7 +2365,10 @@ async function aggiornaDirittiCollaboratore(nrP) {
       azione:"aggiornaDirittiUtente",
       nrPersonale:nrP,
       cognomeNome:`${u.cognome} ${u.nome}`,
+      grado:u.grado,
       funzione:u.funzione,
+      unita:u.unita,
+      gruppo:u.gruppo,
       annoPrec:annoPrec,
       percentuale:u.percentuale,
       dirittoV:u.dirittoV,
@@ -2034,25 +2379,45 @@ async function aggiornaDirittiCollaboratore(nrP) {
   } catch(e) {}
 }
 
-async function addRoleOption() {
-  const v = document.getElementById("newRoleName").value.trim();
-  if (v && !appState.config.funzioni.includes(v)) {
-    appState.config.funzioni.push(v);
+async function addBaseItem(listKey, inputId) {
+  const v = document.getElementById(inputId).value.trim();
+  if (v && !appState.config[listKey].includes(v)) {
+    appState.config[listKey].push(v);
     popolaTutteDropdownFunzioni();
     renderAdminData();
     renderCalendar();
-    try { await chiamaServer({azione:"salvaFunzioniBase", funzioniList:appState.config.funzioni, punteggiSettimane:appState.config.punteggiSettimane}); } catch(e) {}
+    try {
+      await chiamaServer({
+        azione:"salvaFunzioniBase",
+        funzioniList:appState.config.funzioni,
+        punteggiSettimane:appState.config.punteggiSettimane,
+        gradiList:appState.config.gradi,
+        unitaList:appState.config.unita,
+        gruppiList:appState.config.gruppi
+      });
+    } catch(e) {}
   }
-  document.getElementById("newRoleName").value = "";
+  document.getElementById(inputId).value = "";
 }
 
-async function removeRoleOption(rN) {
-  appState.config.funzioni = appState.config.funzioni.filter(f => f !== rN);
-  appState.selectedFilterRoles = appState.selectedFilterRoles.filter(f => f !== rN);
+async function removeBaseItem(listKey, valName) {
+  appState.config[listKey] = appState.config[listKey].filter(x => x !== valName);
+  if (listKey === 'funzioni') appState.selectedFilterRoles = appState.selectedFilterRoles.filter(f => f !== valName);
+  if (listKey === 'unita') appState.selectedFilterUnita = appState.selectedFilterUnita.filter(u => u !== valName);
+  if (listKey === 'gruppi') appState.selectedFilterGruppi = appState.selectedFilterGruppi.filter(g => g !== valName);
   popolaTutteDropdownFunzioni();
   renderAdminData();
   renderCalendar();
-  try { await chiamaServer({azione:"salvaFunzioniBase", funzioniList:appState.config.funzioni, punteggiSettimane:appState.config.punteggiSettimane}); } catch(e) {}
+  try {
+    await chiamaServer({
+      azione:"salvaFunzioniBase",
+      funzioniList:appState.config.funzioni,
+      punteggiSettimane:appState.config.punteggiSettimane,
+      gradiList:appState.config.gradi,
+      unitaList:appState.config.unita,
+      gruppiList:appState.config.gruppi
+    });
+  } catch(e) {}
 }
 
 function addUnifiedRule() {
@@ -2068,6 +2433,14 @@ function addUnifiedRule() {
     const selTarget = document.getElementById("absTargetGroup");
     const selectedVals = Array.from(selTarget.selectedOptions).map(o => o.value);
     const targetGroupStr = (selectedVals.length === 0 || selectedVals.includes("TUTTI")) ? "TUTTI" : selectedVals.join("+");
+
+    const selU = document.getElementById("absTargetUnita");
+    const selUVals = Array.from(selU.selectedOptions).map(o => o.value);
+    const targetUnitaStr = (selUVals.length === 0 || selUVals.includes("TUTTE")) ? "TUTTE" : (selUVals.includes("OGNI_UNITA") ? "OGNI_UNITA" : selUVals.join("+"));
+
+    const selG = document.getElementById("absTargetGruppo");
+    const selGVals = Array.from(selG.selectedOptions).map(o => o.value);
+    const targetGruppoStr = (selGVals.length === 0 || selGVals.includes("TUTTI")) ? "TUTTI" : (selGVals.includes("OGNI_GRUPPO") ? "OGNI_GRUPPO" : selGVals.join("+"));
 
     const rawConc = document.getElementById("absMaxConcurrent").value.trim();
     const rawCons = document.getElementById("absMaxConsecutive").value.trim();
@@ -2089,7 +2462,10 @@ function addUnifiedRule() {
 
     appState.config.unifiedRules.push({
       id: Date.now(), kind: 'absence', tornata: document.getElementById("absTornata").value,
-      periodType, weeks, start, end, targetGroup: targetGroupStr,
+      periodType, weeks, start, end,
+      targetGroup: targetGroupStr,
+      targetUnita: targetUnitaStr,
+      targetGruppo: targetGruppoStr,
       maxConcurrent: isNaN(mConc) ? "" : mConc,
       maxConsecutive: isNaN(mCons) ? "" : mCons,
       maxTotalInPeriod: isNaN(mTot) ? "" : mTot,
@@ -2116,12 +2492,17 @@ function updateYear() {
 function addClosure() { const d = document.getElementById('closureDate').value, n = document.getElementById('closureName').value; if (d && n) { appState.config.closures.push({id:Date.now(),date:d,name:n}); document.getElementById('closureDate').value = ''; document.getElementById('closureName').value = ''; renderAdminData(); } }
 
 async function addCollaborator() {
-  const nr = document.getElementById('addUserNr').value.trim(), fN = document.getElementById('addUserName').value.trim(), role = document.getElementById('addUserRole').value;
+  const nr = document.getElementById('addUserNr').value.trim(), fN = document.getElementById('addUserName').value.trim();
+  const grado = document.getElementById('addUserGrado').value, role = document.getElementById('addUserRole').value;
+  const unita = document.getElementById('addUserUnita').value, gruppo = document.getElementById('addUserGruppo').value;
   const perc = parseInt(document.getElementById('addUserPerc').value)||100, dV = parseInt(document.getElementById('addUserDirV').value)||0, dF = parseInt(document.getElementById('addUserDirF').value)||0, dPF = parseInt(document.getElementById('addUserDirPF').value)||0, ptPrec = parseFloat(document.getElementById('addUserPtPrec').value)||0;
   if (!nr || !fN) { alert("Inserisci Nr. Personale e Cognome Nome!"); return; }
   const parts = fN.split(" "), cognome = parts[0], nome = parts.slice(1).join(" ")||"";
-  try { const ris = await chiamaServer({azione:"registra",nrPersonale:nr,nome,cognome,funzione:role,percentuale:perc,dirittoV:dV,dirittoF:dF,dirittoPF:dPF,puntiAnnoPrec:ptPrec,password:"Cambiami2027"}); if (!ris.successo) { alert(ris.messaggio); return; } } catch(e) {}
-  appState.utenti.push({nrPersonale:nr,nome,cognome,funzione:role,percentuale:perc,dirittoV:dV,dirittoF:dF,dirittoPF:dPF,puntiAnnoPrec:ptPrec});
+  try {
+    const ris = await chiamaServer({azione:"registra",nrPersonale:nr,nome,cognome,grado,funzione:role,unita,gruppo,percentuale:perc,dirittoV:dV,dirittoF:dF,dirittoPF:dPF,puntiAnnoPrec:ptPrec,password:"Cambiami2027"});
+    if (!ris.successo) { alert(ris.messaggio); return; }
+  } catch(e) {}
+  appState.utenti.push({nrPersonale:nr,nome,cognome,grado,funzione:role,unita,gruppo,percentuale:perc,dirittoV:dV,dirittoF:dF,dirittoPF:dPF,puntiAnnoPrec:ptPrec});
   document.getElementById('addUserNr').value = ''; document.getElementById('addUserName').value = ''; renderAdminData();
 }
 
@@ -2157,12 +2538,16 @@ async function salvaTuttoSuGoogle() {
         manualActive:appState.config.manualActiveTornata,
         list:appState.config.tornate,
         rankingRoles:appState.config.rankingRoles,
+        functionOnlyRoles:appState.config.functionOnlyRoles,
         rankingMetric:appState.config.rankingMetric,
         rankingTurnIndex:appState.config.rankingTurnIndex
       },
       anno:appState.config.anno,
       maxWeeks:appState.config.maxWeeks,
       funzioni:appState.config.funzioni.join(","),
+      gradiList:appState.config.gradi,
+      unitaList:appState.config.unita,
+      gruppiList:appState.config.gruppi,
       punteggiSettimane:appState.config.punteggiSettimane,
       closures:appState.config.closures,
       unifiedRules:appState.config.unifiedRules
@@ -2171,7 +2556,6 @@ async function salvaTuttoSuGoogle() {
   } catch(e) { alert("Errore salvataggio: " + e.message); }
 }
 
-// SINCRONIZZAZIONE AUTOMATICA IN BACKGROUND (OGNI 90 SECONDI)
 setInterval(async function() {
   if (!appState.utenteLoggato || document.hidden) return;
   const adminAttivo = document.getElementById('viewAdmin').classList.contains('active');
